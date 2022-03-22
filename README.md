@@ -3,7 +3,7 @@ The r2redux package will be used to test the significant difference between two 
 
 # INSTALLATION
 To use r2redux:
--install.packages("devtools")
--install.packages("r2redux")
--library(devtools)
--library(r2redux)
+- install.packages("devtools")
+- install.packages("r2redux")
+- library(devtools)
+- library(r2redux)
