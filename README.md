@@ -1,5 +1,5 @@
 # r2redux
-The r2redux package will be used to test the significant difference between two PRS (dependent and/or independent). We use predictive ability (R2) measures and their variance covariance matrix to assess if the R^2 of PRS based on different sources is significantly different to each other. 
+The r2redux package will be used to test the significant difference between two PRS (dependent and/or independent). We use predictive ability (R2) measures and their variance covariance matrix to assess if the R2 of PRS based on different sources is significantly different to each other. 
 
 # INSTALLATION
 To use r2redux:
