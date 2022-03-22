@@ -26,7 +26,7 @@ r2redux requires only phenotype and estimated PRS from PLINK or any other softwa
 - PRS for p value 0.01 (x8)
 - PRS for p value 0.001 (x9)
 - PRS for p value 0.0001 (x10)
-
+ 
 b. Genomic enrichment analysis
 If we want to perform some enrichment analysis (e.g., regulatory vs non_regulatory) to in the PRS context to test significantly different from the expectation (e.g., contribution of regulatory SNP is 4%). We simultaneously fit two sets of PRS from regulatory and non-regulatory to get β_regu^2 and β_non_regu^2, using a multiple regression, and assess if the ratio, (β_regu^2)/(β_regu^2 + β_(non_regu)^2 ) , is significantly different from the expectation. To test this, we need to prepare input file for r2redux2 that includes following fields (e.g. test_ukbb_enrichment_choles in example file).
 - Phenotype (y)
