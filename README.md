@@ -1,5 +1,5 @@
 # r2redux
-The r2redux package will be used to test the significant difference between two PRS. We use predictive ability (R^2) measures and their variance covariance matrix to assess if the predictive ability of PRS based on different sources is significantly different to each other. 
+The r2redux package will be used to test the significant difference between two PRS (dependent and/or independent). We use predictive ability (R^2) measures and their variance covariance matrix to assess if the R^2 of PRS based on different sources is significantly different to each other. 
 
 # INSTALLATION
 To use r2redux:
@@ -33,3 +33,5 @@ If we want to perform some enrichment analysis (regulatory vs non_regulatory) to
 - PRS for regulatory region (x1)
 - PRS for non-regulatory region (x2)      
 
+# Contact information
+Please contact Associate Prof. Dr. Hong Lee (hong.lee@unisa.edu.au) if you have any queries
