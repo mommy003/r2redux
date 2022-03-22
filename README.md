@@ -9,7 +9,7 @@ To use r2redux:
 - library(r2redux)
  
 # QUICK START
-We illustrate the usage of r2redux2 using the GWAS summary statistics from UK Biobank (reference) to predict white British as target. Note that the target individuals were independent from reference individuals. We can test the significance differences of predictive ability among different P-value threshold of SNP effect. We can also test the differences of predictive ability of UKBB reference and BBJ reference in target individuals or we can test the differences of joint model and single model [e.g., R_((UKBB+BBJ))^2 vs  R_((UKBB))^2  and/or R_((UKBB+BBJ))^2 and R_((BBJ))^2]. 
+We illustrate the usage of r2redux using the GWAS summary statistics from UK Biobank (reference) to predict white British as target. Note that the target individuals were independent from reference individuals. We can test the significance differences of predictive ability among different P-value threshold of SNP effect. We can also test the differences of predictive ability of UKBB reference and BBJ reference in target individuals or we can test the differences of joint model and single model [e.g., R_((UKBB+BBJ))^2 vs  R_((UKBB))^2  and/or R_((UKBB+BBJ))^2 and R_((BBJ))^2]. 
 
 
 # DATA PREPARATION
