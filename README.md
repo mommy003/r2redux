@@ -1,21 +1,21 @@
 # r2redux
-The r2redux package will be used to test the significant difference between two PRS (dependent and/or independent). We use predictive ability (R2) measures and their variance covariance matrix to assess if the R2 of PRS based on different sources is significantly different to each other. 
+The ‘r2redux’ package can be used to derive test statistics for R2 values from polygenic risk score (PRS) models (variance and covariance of R2 values, p-value and 95% confidence intervals (CI)). For example, it can test if two sets of R2 values from two different PRS models are significantly different to each other whether the two sets of PRS are independent or dependent. Because R2 value is often regarded as the predictive ability of PRS, r2redux package can be useful to assess the performances of PRS methods or multiple sets of PRS based on different information sources. Furthermore, the package can derive the information matrix of beta1^2 and beta2^2 from a multiple regression (see olkin_beta1_2 or olkin_beta_info function in the manual), which is a basis of a novel PRS-based genomic partitioning method (see r2_enrich or r2_enrich_beta function in the manual).  
 
 # INSTALLATION
 To use r2redux:
 - install.packages("devtools")
-- install.packages("r2redux") or
-- devtools::install_github("mommy003/r2redux")
 - library(devtools)
+- devtools::install_github("mommy003/r2redux") or
+- install.packages("r2redux")  
 - library(r2redux)
- 
+
 # QUICK START
-We illustrate the usage of r2redux using the GWAS summary statistics from UK Biobank (reference) to predict white British as target. Note that the target individuals were independent from reference individuals. We can test the significance differences of predictive ability among different P-value threshold of SNP effect. We can also test the differences of predictive ability of UKBB reference and BBJ reference in target individuals or we can test the differences of joint model and single model [e.g., R2_((UKBB+BBJ)) vs  R2_((UKBB))  and/or R2_((UKBB+BBJ)) and R2_((BBJ))]. 
+We illustrate the usage of r2redux using multiple sets of PRS estimated based on GWAS summary statistics from UK Biobank or biobank Japan (reference datasets). In a target dataset, the phenotypes of target samples (y) can be predicted with PRS (a PRS model, e.g. y = PRS + e where y and PRS are column-standardised (Olkin and Finn 1995)). Note that the target individuals should be independent from reference individuals. We can test the significant differences of the predictive ability (R2) between a pair of PRS (see …. Function and example in the manual). 
 
 
 # DATA PREPARATION
-**a.	To estimate R2 for each p-value threshold:** 
-r2redux requires only phenotype and estimated PRS from PLINK or any other software of interest. Please note that, any missing values in the phenotypes should be removed. Phenotype and PRSs should be scaled before using r2redux2. If we want to test significant difference between/among thresholds, need to prepare input file for r2redux that includes following fields (e.g. test_ukbb_thresholds_scaled in example directory). 
+**a.	Statistical testing of significant difference between R2 values for p-value thresholds:** 
+r2redux requires only phenotype and estimated PRS (from PLINK or any other software). Note that any missing value in the phenotypes should be removed. Phenotype and PRSs should be column-standardised before using r2redux (Olkin and Finn 1995). If we want to test the significant difference of R2 values for p-value thresholds, r2_diff function can be used with an input file that includes the following fields (also see test_ukbb_thresholds_scaled in the example directory and r2)diff function in the manual). 
 - Phenotype (y)
 - PRS for p value 1 (x1)
 - PRS for p value 0.5 (x2)
@@ -28,11 +28,14 @@ r2redux requires only phenotype and estimated PRS from PLINK or any other softwa
 - PRS for p value 0.001 (x9)
 - PRS for p value 0.0001 (x10)
  
-**b. Genomic enrichment analysis:**
-If we want to perform some enrichment analysis (e.g., regulatory vs non_regulatory) in the PRS context to test significantly different from the expectation (e.g., contribution of regulatory SNP is 4%). We simultaneously fit two sets of PRS from regulatory and non-regulatory to get β_regu^2 and β_non_regu^2, using a multiple regression, and assess if the ratio, (β_regu^2)/(β_regu^2 + β_(non_regu)^2 ) , is significantly different from the expectation. To test this, we need to prepare input file for r2redux that includes following fields (e.g. test_ukbb_enrichment_choles in example directory).
+**b. PRS-based genomic enrichment analysis:**
+If we want to perform some enrichment analysis (e.g., regulatory vs non_regulatory) in the PRS context to test significantly different from the expectation (4% = # SNPs in the regulatory / total # SNPs). We simultaneously fit two sets of PRS from regulatory and non-regulatory to get Î²_regu^2 and Î²_non_regu^2, using a multiple regression, and assess if the ratio, (Î²_regu^2)/(Î²_regu^2 + Î²_(non_regu)^2 ) , is significantly different from the expectation. To test this, we need to prepare input file for r2redux that includes the following fields (e.g. test_ukbb_enrichment_choles in example directory ).
 - Phenotype (y)
 - PRS for regulatory region (x1)
 - PRS for non-regulatory region (x2)      
 
+# Refrences
+Olkin, I. and J.D. Finn, Correlations redux. Psychological Bulletin, 1995. 118(1): p. 155.
+
 # Contact information
-Please contact Associate Prof. Dr. Hong Lee (hong.lee@unisa.edu.au) if you have any queries.
+Please contact Hong Lee (hong.lee@unisa.edu.au) or Moksedul Momin (momin@cvasu.ac.bd) if you have any queries.
