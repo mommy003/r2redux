@@ -15,7 +15,7 @@ We illustrate the usage of r2redux using the GWAS summary statistics from UK Bio
 
 # DATA PREPARATION
 **a.	To estimate R2 for each p-value threshold:** 
-r2redux requires only phenotype and estimated PRS from PLINK or any other software of interest. Please note that, any missing values in the phenotypes should be removed. Phenotype and PRSs should be scaled before using r2redux2. If we want to test significant difference between/among thresholds, need to prepare input file for r2redux2 that includes following fields (e.g. test_ukbb_thresholds_scaled in example directory). 
+r2redux requires only phenotype and estimated PRS from PLINK or any other software of interest. Please note that, any missing values in the phenotypes should be removed. Phenotype and PRSs should be scaled before using r2redux2. If we want to test significant difference between/among thresholds, need to prepare input file for r2redux that includes following fields (e.g. test_ukbb_thresholds_scaled in example directory). 
 - Phenotype (y)
 - PRS for p value 1 (x1)
 - PRS for p value 0.5 (x2)
@@ -29,7 +29,7 @@ r2redux requires only phenotype and estimated PRS from PLINK or any other softwa
 - PRS for p value 0.0001 (x10)
  
 **b. Genomic enrichment analysis:**
-If we want to perform some enrichment analysis (e.g., regulatory vs non_regulatory) in the PRS context to test significantly different from the expectation (e.g., contribution of regulatory SNP is 4%). We simultaneously fit two sets of PRS from regulatory and non-regulatory to get β_regu^2 and β_non_regu^2, using a multiple regression, and assess if the ratio, (β_regu^2)/(β_regu^2 + β_(non_regu)^2 ) , is significantly different from the expectation. To test this, we need to prepare input file for r2redux2 that includes following fields (e.g. test_ukbb_enrichment_choles in example directory).
+If we want to perform some enrichment analysis (e.g., regulatory vs non_regulatory) in the PRS context to test significantly different from the expectation (e.g., contribution of regulatory SNP is 4%). We simultaneously fit two sets of PRS from regulatory and non-regulatory to get β_regu^2 and β_non_regu^2, using a multiple regression, and assess if the ratio, (β_regu^2)/(β_regu^2 + β_(non_regu)^2 ) , is significantly different from the expectation. To test this, we need to prepare input file for r2redux that includes following fields (e.g. test_ukbb_enrichment_choles in example directory).
 - Phenotype (y)
 - PRS for regulatory region (x1)
 - PRS for non-regulatory region (x2)      
