@@ -35,4 +35,4 @@ If we want to perform some enrichment analysis (e.g., regulatory vs non_regulato
 - PRS for non-regulatory region (x2)      
 
 # Contact information
-Please contact Associate Prof. Dr. Hong Lee (hong.lee@unisa.edu.au) if you have any queries
+Please contact Associate Prof. Dr. Hong Lee (hong.lee@unisa.edu.au) if you have any queries.
