@@ -17,15 +17,15 @@
   #' 
   #' dat=read.table("test_ukbb_thresholds_scaled") (see example file)
   #' nv=length(dat$V1)
-  #' v1=c(1) ##1=R2(lm(y~x1))
+  #' v1=c(1) 
   #' output=r2_var(dat,v1,nv)
   #'
   #' r2redux output
   #'
-  #' output$var (variance of R2(y~x[,v1])) 
+  #' output$var (variance of R2) 
   #' 0.0001437583
   #' 
-  #' output$r2_based_p (P-value under null hypothesis, R2=0)
+  #' output$r2_based_p (P-value under the null hypothesis, i.e. R2=0)
   #' 1.213645e-10
   #' 
   #' output$mean_r2 (R2)
@@ -39,30 +39,30 @@
   #'
   #'
   #'
-  #' To get the test for R2(y~x[,v1])
+  #' To get the test statistic for R2(y~x[,v1]+x[,v2]+x[,v3])
   #' 
   #' dat=read.table("test_ukbb_thresholds_scaled") (see example file)
   #' nv=length(dat$V1)
-  #' v1=c(8) ##1=R2(lm(y~x8))
+  #' v1=c(1,2,3) ##1=R2(y~x[,v1]+x[,v2]+x[,v3])
   #' outout=r2_var(dat,v1,nv)
   #' output
   #'
   #' r2redux output
   #'
-  #' output$var (variance of R2R2(y~x[,v1]))
-  #' 0.0001090488
+  #' output$var (variance of R2)
+  #' 0.0001499374
   #' 
   #' output$r2_based_p (R2 based P-value)
-  #' 4.258321e-08
+  #' 7.461267e-11
   #' 
   #' output$mean_r2 (R2)
-  #' 0.02837647
+  #' 0.03917668
   #' 
   #' output$upper_r2 (upper limit of 95% CI for R2)
-  #' 0.05136054
+  #' 0.06538839
   #' 
   #' output$lower_r2 (lower limit of 95% CI for R2)
-  #' 0.01076274
+  #' 0.01821657
 
   r2_var = function (dat,v1,nv) {
     #source("aoa12_1.r")

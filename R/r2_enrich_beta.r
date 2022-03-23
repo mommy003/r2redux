@@ -9,11 +9,12 @@
   #' x1 is N by 1 matrix having the ith explanatory variables.
   #' x2 is N by 1 matrix having the jth explanatory variables.
   #' v1 and v2 indicates the ith and jth column in the data
-  #' (v1 or v2 should be a single interger between 1 - M, see Arguments below)
+  #' (v1 or v2 should be a single interger between 1 - M, see Arguments below).
+  #' Note that r2_enrich (above) and r2_enrich_beta is equivalent (identical p-value derived).
   #' @references
   #' Olkin, I. and J.D. Finn, Correlations redux. Psychological Bulletin, 1995. 118(1): p. 155.
   #' @param dat N by (M+1) matrix having variables in the order of cbind(y,x)
-  #' @param v1 and v2 can be set as v1=1 and v2=2, v1=2 and v2=1, v1=3 and v2=2, or any combination as long as the value is between 1 - M
+  #' @param v1/v2 These can be set as v1=1 and v2=2, v1=2 and v2=1, v1=3 and v2=2, or any combination as long as the value is between 1 - M
   #' @param nv sample size
   #' @param exp1 The expectation of the ratio (e.g. ratio of # SNPs in genomic partitioning)
   #' @keywords variance of ratio between beta^2 from a multiple regression
@@ -44,19 +45,19 @@
   #' output$var1_2 (difference between t1 and t2)
   #' 0.000162113
   #' 
-  #' output$beta1_sq (1st squared regression coefficient)
+  #' output$beta1_sq (t1)
   #' 0.01118301
   #' 
-  #' output$beta2_sq (2nd squared regression coefficient)
+  #' output$beta2_sq (t2)
   #' 0.004980285
   #' 
   #' output$cov (covariance between t1 and t2)
   #' -2.988221e-05
   #' 
-  #' output$ratio (ratio of t1/(t1+t2_2))
+  #' output$ratio (ratio = t1/(t1+t2_2))
   #' 0.6918768
   #' 
-  #' output$ratio_var (variance of ratio)
+  #' output$ratio_var (variance of ratio, var(t1/(t1+t2))
   #' 0.1324076
   #' 
   #' output$enrich_p (p-value for testing the ratio significantly different from 

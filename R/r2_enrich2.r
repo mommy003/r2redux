@@ -9,9 +9,9 @@
   #' v1 or v2 indicates the ith column in the x matrix
   #' (v1 or v2 should be a single interger between 1 - M, see Arguments below)
   #' @param dat N by (M+1) matrix having variables in the order of cbind(y,x)
-  #' @param v1 and v2 can be set as v1=1 and v2=2, v1=2 and v2=1, v1=3 and v2=2, or any combination as long as the value is between 1 - M
+  #' @param v1/v2 These can be set as v1=1 and v2=2, v1=2 and v2=1, v1=3 and v2=2, or any combination as long as the value is between 1 - M
   #' @param nv sample size
-  #' @param exp1 The expectation of the ratio (e.g. ratio of # SNPs in genomic partitioning) 
+  #' @param exp1 The expectation of the ratio (e.g. # SNPs for the genomic region of interest/total # SNPs in genomic partitioning) 
   #' @keywords variance of ratio between R2
   #' @export
   #' @examples 
@@ -24,7 +24,7 @@
   #' nv=length(dat$V1)
   #' v1=c(1)
   #' v2=c(2)
-  #' expected_ratio=0.04
+  #' expected_ratio=0.04 (# SNPs for the regulatory/total # SNPs)
   #' output=r2_enrich(dat,v1,v2,nv,expected_ratio)
   #' output
   #'
@@ -54,10 +54,10 @@
   #' output$mean_diff12_2 (difference of  R2(y~x[,v1]+x[,v2]) - R2(y~x[,v2])))
   #' 0.006845484
   #' 
-  #' output$ratio (ratio of t1/(t1+t2))
+  #' output$ratio (ratio =  t1/(t1+t2))
   #' 0.6918768
   #' 
-  #' output$ratio_var (variance of ratio, (t1/(t1+t2))
+  #' output$ratio_var (variance of ratio, var(t1/(t1+t2))
   #' 0.1324076
   #' 
   #' output$enrich_p (p-value for testing the ratio significantly different 

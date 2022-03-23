@@ -25,7 +25,7 @@ v1 or v2 indicates the ith column in the x matrix
 }
 \examples{
 To get the test statistics for the difference between R2(y~x[,v1]) and R2(y~x[,v2]).
-(here we define R2_1=R2(lm(y~x[,v1])) and R2_2=R2(lm(y~x[,v2])))
+(here we define R2_1=R2(y~x[,v1])) and R2_2=R2(y~x[,v2])))
 
 dat=read.table("test_ukbb_thresholds_scaled") (see example files)
 nv=length(dat$V1)
@@ -59,8 +59,8 @@ output$lower_diff (lower limit of 95\% CI for the difference)
 
 
 
-To get the test statistics for the difference between R2(y~x[,v1]) and R2(y~x[,v2]).
-(here R2_1=R2(lm(y~x[,v1]+x[,v2])) and R2_2=R2(lm(y~x[,v1)))
+To get the test statistics for the difference between R2(y~x[,v1]+x[,v2]) and R2(y~x[,v2]).
+(here R2_1=R2(y~x[,v1]+x[,v2]) and R2_2=R2(y~x[,v1]))
 
 dat=read.table("test_ukbb_thresholds_scaled") (see example files)
 nv=length(dat$V1)
