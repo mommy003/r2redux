@@ -1,0 +1,12 @@
+Package: r2redux
+Title: R2 statistic
+Version: 1.0.3
+Authors: Sang Hong Lee (hong.lee@unisa.edu.au) and Md Moksedul Momin (momin@cvasu.ac.bd)
+Authors@R: c(
+  person("Hong", "Lee", , "hong.lee@unisa.edu.au", role = c("aut", "cre")),
+  person("Moksedul", "momin", email = "momin@cvasu.ac.bd", role = "aut"))
+Description: R2 statistic for signficance test.
+License: `use_gpl3_license()`
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2.9000
