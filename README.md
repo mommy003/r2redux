@@ -34,7 +34,7 @@ If we want to perform some enrichment analysis (e.g., regulatory vs non_regulato
 - PRS for regulatory region (x1)
 - PRS for non-regulatory region (x2)      
 
-# Refrences
+# Refernces
 Olkin, I. and J.D. Finn, Correlations redux. Psychological Bulletin, 1995. 118(1): p. 155.
 
 # Contact information
