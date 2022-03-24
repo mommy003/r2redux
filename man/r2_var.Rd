@@ -53,7 +53,7 @@ To get the test statistic for R2(y~x[,v1]+x[,v2]+x[,v3])
 
 dat=read.table("test_ukbb_thresholds_scaled") (see example file)
 nv=length(dat$V1)
-v1=c(1,2,3) ##1=R2(y~x[,v1]+x[,v2]+x[,v3])
+v1=c(1,2,3) 
 outout=r2_var(dat,v1,nv)
 output
 

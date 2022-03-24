@@ -11,13 +11,33 @@
   #' @keywords information matrix in the context of correlation
   #' @export
   #' @examples
-  #' olkin_beta1_2 (omat,nv) (see example file)
+  #' To get information (variance-covariance) matrix of beta1^2 and beta2^2 where 
+  #' beta1 and 2 are regression coefficients from a multiple regression model.
+  #' 
   #' dat=read.table("test_ukbb_thresholds_scaled") (see example files)
   #' omat=cor(dat)[1:3,1:3]
   #' omat
   #' 1.0000000 0.1958636 0.1970060
   #' 0.1958636 1.0000000 0.9981003
   #' 0.1970060 0.9981003 1.0000000
+  #' 
+  #' nv=length(dat$V1)
+  #' output=olkin_beta1_2(omat,nv) 
+  #' output
+  #' 
+  #' output$info (2x2 information (variance-covariance) matrix)
+  #' 0.04146276 0.08158261
+  #' 0.08158261 0.16111124             
+  #' 
+  #' output$var1 (variance of beta1^2)
+  #' 0.04146276 
+  #'             
+  #' output$var2 (variance of beta2^2)
+  #' 0.1611112
+  #' 
+  #' output$var1_2 (variance of difference between beta1^2 and beta2^2)
+  #' 0.03940878        
+
 
 
   olkin_beta1_2 = function (omat,nv) {

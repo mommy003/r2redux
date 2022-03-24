@@ -63,7 +63,7 @@ output$beta2_sq (t2)
 output$cov (covariance between t1 and t2)
 -2.988221e-05
 
-output$ratio (ratio = t1/(t1+t2_2))
+output$ratio (ratio = t1/(t1+t2))
 0.6918768
 
 output$ratio_var (variance of ratio, var(t1/(t1+t2))

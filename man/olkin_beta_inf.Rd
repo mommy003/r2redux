@@ -18,13 +18,33 @@ i.e. y = x1•beta1 + x2•beta2 + e, where y, x1 and x2 are column-standardised
 (see Olkin and Finn 1995).
 }
 \examples{
-olkin_beta_inf (omat,nv) (see example file)
+To get information (variance-covariance) matrix of beta1^2 and beta2^2 where 
+beta1 and 2 are regression coefficients from a multiple regression model.
+
 dat=read.table("test_ukbb_thresholds_scaled") (see example files)
 omat=cor(dat)[1:3,1:3]
 omat
 1.0000000 0.1958636 0.1970060
 0.1958636 1.0000000 0.9981003
-0.1970060 0.9981003 1.0000000 
+0.1970060 0.9981003 1.0000000
+
+nv=length(dat$V1)
+output=olkin_beta_inf(omat,nv) 
+output
+
+
+output$info (2x2 information (variance-covariance) matrix)
+0.2531406 -0.2526212
+-0.2526212  0.2530269            
+
+output$var1 (variance of beta1^2)
+0.2531406
+            
+output$var2 (variance of beta2^2)
+0.2530269
+
+output$var1_2 (variance of difference between beta1^2 and beta2^2)
+1.01141       
 }
 \references{
 Olkin, I. and J.D. Finn, Correlations redux. Psychological Bulletin, 1995. 118(1): p. 155.

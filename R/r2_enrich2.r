@@ -11,7 +11,7 @@
   #' @param dat N by (M+1) matrix having variables in the order of cbind(y,x)
   #' @param v1/v2 These can be set as v1=1 and v2=2, v1=2 and v2=1, v1=3 and v2=2, or any combination as long as the value is between 1 - M
   #' @param nv sample size
-  #' @param exp1 The expectation of the ratio (e.g. # SNPs for the genomic region of interest/total # SNPs in genomic partitioning) 
+  #' @param exp1 The expectation of the ratio (e.g. # SNPs for the genomic region of interest / total # SNPs in genomic partitioning) 
   #' @keywords variance of ratio between R2
   #' @export
   #' @examples 

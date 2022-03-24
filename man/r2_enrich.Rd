@@ -11,7 +11,7 @@ r2_enrich(dat, v1, v2, nv, exp1)
 
 \item{nv}{sample size}
 
-\item{exp1}{The expectation of the ratio (e.g. # SNPs for the genomic region of interest/total # SNPs in genomic partitioning)}
+\item{exp1}{The expectation of the ratio (e.g. # SNPs for the genomic region of interest / total # SNPs in genomic partitioning)}
 
 \item{v1/v2}{These can be set as v1=1 and v2=2, v1=2 and v2=1, v1=3 and v2=2, or any combination as long as the value is between 1 - M}
 }
