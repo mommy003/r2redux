@@ -10,8 +10,7 @@ To use r2redux:
 - library(r2redux)
 
 # QUICK START
-We illustrate the usage of r2redux using multiple sets of PRS estimated based on GWAS summary statistics from UK Biobank or biobank Japan (reference datasets). In a target dataset, the phenotypes of target samples (y) can be predicted with PRS (a PRS model, e.g. y = PRS + e where y and PRS are column-standardised (Olkin and Finn 1995)). Note that the target individuals should be independent from reference individuals. We can test the significant differences of the predictive ability (R2) between a pair of PRS (see r2_diff function and example in the manual). 
-
+We illustrate the usage of r2redux using multiple sets of PRS estimated based on GWAS summary statistics from UK Biobank or Biobank Japan (reference datasets). In a target dataset, the phenotypes of target samples (y) can be predicted with PRS (a PRS model, e.g. y = PRS + e where y and PRS are column-standardised (Olkin and Finn 1995)). Note that the target individuals should be independent from reference individuals. We can test the significant differences of the predictive ability (R2) between a pair of PRS (see r2_diff function and example in the manual). 
 
 # DATA PREPARATION
 **a.	Statistical testing of significant difference between R2 values for p-value thresholds:** 
