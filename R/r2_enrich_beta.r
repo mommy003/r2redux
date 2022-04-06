@@ -118,8 +118,18 @@
       uci=ratio1+1.96*ratio1_var^.5
       lci=ratio1-1.96*ratio1_var^.5
 
+      #alternative
+      dvr3=dvr1/exp1-dvr2/(1-exp1)
+      var_dvr3=var1/exp1^2+var2/(1-exp1)^2-2*cov/(exp1*(1-exp1))
+      chi_dum=dvr3^2/var_dvr3
+      p4=pchisq(chi_dum,1,lower.tail=F)
+      #95% CI
+      uci2=dvr3+1.96*var_dvr3^.5
+      lci2=dvr3-1.96*var_dvr3^.5
+
       #z=list(var1=var1,var2=var2,var1_2=var1_2,beta1_sq=dvr1,beta2_sq=dvr2,cov=cov,ratio1=ratio1,ratio2=ratio2,ratio1_var=ratio1_var,ratio2_var=ratio2_var,enrich_p=p3,upper_ratio1=uci,lower_ratio1=lci)
-      z=list(var1=var1,var2=var2,var1_2=var1_2,beta1_sq=dvr1,beta2_sq=dvr2,cov=cov,ratio=ratio1,ratio_var=ratio1_var,enrich_p=p3,upper_ratio=uci,lower_ratio=lci)
+      #z=list(var1=var1,var2=var2,var1_2=var1_2,beta1_sq=dvr1,beta2_sq=dvr2,cov=cov,ratio=ratio1,ratio_var=ratio1_var,enrich_p=p3,upper_ratio=uci,lower_ratio=lci)
+      z=list(var1=var1,var2=var2,var1_2=var1_2,beta1_sq=dvr1,beta2_sq=dvr2,cov=cov,ratio=ratio1,ratio_var=ratio1_var,enrich_p=p3,upper_ratio=uci,lower_ratio=lci,enrich_p2=p4,mean_diff=dvr3,var_diff=var_dvr3,upper_diff=uci2,lower_diff=lci2)
       return(z)
 
 

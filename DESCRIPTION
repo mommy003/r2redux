@@ -5,7 +5,6 @@ Version: 1.0.1
 Authors@R: c(
   person("Hong", "Lee", email = "hong.lee@unisa.edu.au", role = c("cre","aut")),
   person("Moksedul", "Momin", email = "momin@cvasu.ac.bd", role = "aut"))
-Maintainer: Hong Lee
 Description: R2 statistic for signficance test.
 License: `use_gpl3_license()`
 Encoding: UTF-8
