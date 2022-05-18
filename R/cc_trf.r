@@ -12,6 +12,7 @@
   #' @keywords Transformation of R2 between observed scale and liability scale
   #' @references
   #' Lee, S. H., Goddard, M. E., Wray, N. R., and Visscher, P. M. A better coefficient of determination for genetic profile analysis. Genetic epidemiology,(2012). 36(3): p. 214-224.
+  #' @export 
   #' @examples 
   #' To get the transformed predictive ability 
   #' output=cc_trf(0.06, 0.002, 0.05, 0.05)
