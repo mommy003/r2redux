@@ -1,3 +1,4 @@
+
   #' cc_trf function
   #'
   #' This function transforms the predictive ability and 
@@ -28,7 +29,6 @@
   #' 0.000447872
   #'
   
-
 
 cc_trf = function (R2,se, K,P) {
 
