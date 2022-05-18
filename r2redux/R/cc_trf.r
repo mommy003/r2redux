@@ -1,4 +1,3 @@
-
   #' cc_trf function
   #'
   #' This function transforms the predictive ability and 
@@ -30,6 +29,7 @@
   #'
   
 
+
 cc_trf = function (R2,se, K,P) {
 
     thd = -qnorm(K,0,1)
@@ -55,3 +55,4 @@ cc_trf = function (R2,se, K,P) {
     return(z)
 
   }
+
