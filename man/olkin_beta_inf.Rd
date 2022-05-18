@@ -30,8 +30,7 @@ omat
 
 nv=length(dat$V1)
 output=olkin_beta_inf(omat,nv) 
-output
-
+output 
 
 output$info (2x2 information (variance-covariance) matrix)
 0.2531406 -0.2526212

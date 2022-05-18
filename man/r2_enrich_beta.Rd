@@ -78,6 +78,21 @@ output$upper_ratio (upper limit of 95\% CI for the ratio)
 
 output$lower_ratio (lower limit of 95\% CI for the ratio)
 -0.02132515
+
+output$enrich_p2 (p-value for testing the difference between t1/exp and t2/exp)
+0.1997805
+
+output$mean_diff (difference between t1/exp and t2/exp)
+0.2743874
+
+output$var_diff (variance of difference, t1/exp - t2/exp)
+0.04579649
+
+output$upper_diff (upper limit of 95\% CI for the mean difference)
+0.6938296
+
+output$lower_diff (lower limit of 95\% CI for the mean difference)
+-0.1450549
 }
 \references{
 Olkin, I. and J.D. Finn, Correlations redux. Psychological Bulletin, 1995. 118(1): p. 155.

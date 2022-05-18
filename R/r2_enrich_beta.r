@@ -69,6 +69,21 @@
   #' 
   #' output$lower_ratio (lower limit of 95% CI for the ratio)
   #' -0.02132515
+  #'
+  #' output$enrich_p2 (p-value for testing the difference between t1/exp and t2/exp)
+  #' 0.1997805
+  #' 
+  #' output$mean_diff (difference between t1/exp and t2/exp)
+  #' 0.2743874
+  #' 
+  #' output$var_diff (variance of difference, t1/exp - t2/exp)
+  #' 0.04579649
+  #' 
+  #' output$upper_diff (upper limit of 95% CI for the mean difference)
+  #' 0.6938296
+  #' 
+  #' output$lower_diff (lower limit of 95% CI for the mean difference)
+  #' -0.1450549
 
 
   r2_enrich_beta = function (dat,v1,v2,nv,exp1) {
@@ -79,7 +94,7 @@
     #source("aoa12_34.r")
     source("aoa_beta1_2.r")
 
-    dat=scale(dat);omat=cor(dat)
+   dat=scale(dat);omat=cor(dat)
 
       m1=lm(dat[,1]~dat[,(1+v1)])
       s1=summary(m1)

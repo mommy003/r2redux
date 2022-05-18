@@ -1,10 +1,11 @@
 Type: Package
 Package: r2redux
 Title: R2 statistic
-Version: 1.0.1
+Version: 1.0.3
 Authors@R: c(
   person("Hong", "Lee", email = "hong.lee@unisa.edu.au", role = c("cre","aut")),
   person("Moksedul", "Momin", email = "momin@cvasu.ac.bd", role = "aut"))
+Maintainer: Moksedul Momiin <momin@cvasu.ac.bd>
 Description: R2 statistic for signficance test.
 License: `use_gpl3_license()`
 Encoding: UTF-8
