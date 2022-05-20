@@ -1,12 +1,10 @@
 Package: r2redux
 Title: R2 statistic
 Version: 1.0.3
-Authors@R: c(
-  person("Hong", "Lee", email = "hong.lee@unisa.edu.au", role = c("cre","aut")),
-  person("Moksedul", "Momin", email = "momin@cvasu.ac.bd", role = "aut"))
+Authors: Sang Hong Lee <hong.lee@unisa.edu.au> and  Md Moksedul Momiin
 Maintainer: Moksedul Momiin <momin@cvasu.ac.bd>
 Description: R2 statistic for signficance test.
-License: `use_mit_license()`
+License: `use_gpl3_license()`
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
