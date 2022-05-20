@@ -47,6 +47,7 @@ output$var1_2 (variance of difference between beta1^2 and beta2^2)
 }
 \references{
 Olkin, I. and J.D. Finn, Correlations redux. Psychological Bulletin, 1995. 118(1): p. 155.
+Momin, M.M., Lee, S. Wray, N. and S. Lee, S.H. The variance and covariance of the coefficients of determination for genetic profile analysis (will be subbitted soon)
 }
 \keyword{context}
 \keyword{correlation}

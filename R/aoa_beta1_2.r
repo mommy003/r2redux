@@ -6,6 +6,7 @@
   #' (i.e. in the context of correlation coefficients,see Olkin and Finn 1995).
   #' @references
   #' Olkin, I. and J.D. Finn, Correlations redux. Psychological Bulletin, 1995. 118(1): p. 155.
+  #' Momin, M.M., Lee, S. Wray, N. and S. Lee, S.H. The variance and covariance of the coefficients of determination for genetic profile analysis (will be subbitted soon)
   #' @param omat 3 by 3 matrix having the correlation coefficients between y, x1 and x2, i.e. omat=cor(dat) where dat is N by 3 matrix having variables in the order of cbind (y,x1,x2)
   #' @param nv sample size
   #' @keywords information matrix in the context of correlation
