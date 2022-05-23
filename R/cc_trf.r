@@ -1,4 +1,3 @@
-
   #' cc_trf function
   #'
   #' This function transforms the predictive ability (R2) and
@@ -13,6 +12,7 @@
   #' Lee, S. H., Goddard, M. E., Wray, N. R., and Visscher, P. M. A better coefficient of determination for genetic profile analysis. Genetic epidemiology,(2012). 36(3): p. 214-224.
   #' @export
   #' @examples
+  #'
   #' To get the transformed R2
   #' output=cc_trf(0.06, 0.002, 0.05, 0.05)
   #'

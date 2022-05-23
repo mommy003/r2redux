@@ -1,10 +1,12 @@
 Package: r2redux
-Title: R2 statistic
-Version: 1.0.3
-Authors: Sang Hong Lee and  Md Moksedul Momiin
-Maintainer: Moksedul Momiin <cvasu.momin@gmail.com>
-Description: R2 statistic for signficance test.
-License: `use_gpl3_license()`
+Title: R2 Statistic
+Version: 1.0.4
+Author: Hong Lee, Moksedul Momin
+Maintainer: Moksedul Momin <cvasu.momin@gmail.com>
+Description: R2 statistic for significance test.
+License: GPL (>=3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
+NeedsCompilation: no
+
