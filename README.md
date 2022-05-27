@@ -37,4 +37,4 @@ If we want to perform some enrichment analysis (e.g., regulatory vs non_regulato
 Olkin, I. and J.D. Finn, Correlations redux. Psychological Bulletin, 1995. 118(1): p. 155.
 
 # Contact information
-Please contact Hong Lee (hong.lee@unisa.edu.au) or Moksedul Momin (momin@cvasu.ac.bd) if you have any queries.
+Please contact Hong Lee (hong.lee@unisa.edu.au) or Moksedul Momin (cvasu.momin@gmail.com) if you have any queries.
