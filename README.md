@@ -14,7 +14,7 @@ We illustrate the usage of r2redux using multiple sets of PRS estimated based on
 
 # DATA PREPARATION
 **a.	Statistical testing of significant difference between R2 values for p-value thresholds:** 
-If we want to perform some enrichment analysis (e.g., regulatory vs non_regulatory) in the PRS context to test significantly different from the expectation (4% = # SNPs in the regulatory / total # SNPs). We simultaneously fit two sets of PRS from regulatory and non-regulatory to get Î²_regu^2 and Î²_non_regu^2, using a multiple regression, and assess if the differences, (Î²_regu^2/expectation) - (Î²_non_regu^2/(1-expectation), is significantly different from the null hypothesis. To test this, we need to prepare input file for r2redux that includes the following fields (e.g. test_ukbb_enrichment_choles in example directory and r2_enrich_beta function in the manual).
+r2redux requires only phenotype and estimated PRS (from PLINK or any other software). Note that any missing value in the phenotypes should be removed. Phenotype and PRSs should be column-standardised before using r2redux (Olkin and Finn 1995). If we want to test the significant difference of R2 values for p-value thresholds, r2_diff function can be used with an input file that includes the following fields (also see test_ukbb_thresholds_scaled in the example directory and r2_diff function in the manual).
 - Phenotype (y)
 - PRS for p value 1 (x1)
 - PRS for p value 0.5 (x2)
@@ -28,7 +28,7 @@ If we want to perform some enrichment analysis (e.g., regulatory vs non_regulato
 - PRS for p value 0.0001 (x10)
  
 **b. PRS-based genomic enrichment analysis:**
-If we want to perform some enrichment analysis (e.g., regulatory vs non_regulatory) in the PRS context to test significantly different from the expectation (4% = # SNPs in the regulatory / total # SNPs). We simultaneously fit two sets of PRS from regulatory and non-regulatory to get Î²_regu^2 and Î²_non_regu^2, using a multiple regression, and assess if the ratio, (Î²_regu^2)/(Î²_regu^2 + Î²_(non_regu)^2 ) , is significantly different from the expectation. To test this, we need to prepare input file for r2redux that includes the following fields (e.g. test_ukbb_enrichment_choles in example directory and r2_enrich or r2_enrich_beta function in the manual).
+If we want to perform some enrichment analysis (e.g., regulatory vs non_regulatory) in the PRS context to test significantly different from the expectation (4% = # SNPs in the regulatory / total # SNPs). We simultaneously fit two sets of PRS from regulatory and non-regulatory to get Î²_regu^2 and Î²_non_regu^2, using a multiple regression, and assess if the differences, (Î²_regu^2/expectation) - (Î²_non_regu^2/(1-expectation)), is significantly different from the null hypothesis. To test this, we need to prepare input file for r2redux that includes the following fields (e.g. test_ukbb_enrichment_choles in example directory and r2_enrich_beta function in the manual).
 - Phenotype (y)
 - PRS for regulatory region (x1)
 - PRS for non-regulatory region (x2)      
