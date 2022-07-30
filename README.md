@@ -4,13 +4,13 @@ The ‘r2redux’ package can be used to derive test statistics for R^2 values f
 
 # INSTALLATION
 To use r2redux:
-•	install.packages("r2redux") 
-•	library(r2redux)
+- install.packages("r2redux") 
+- library(r2redux)
 or
-•	install.packages("devtools")
-•	library(devtools)
-•	devtools::install_github("mommy003/r2redux_version4")
-•	library(r2redux)
+-	install.packages("devtools")
+-	library(devtools)
+-	devtools::install_github("mommy003/r2redux_version4")
+-	library(r2redux)
 
 
 # QUICK START
