@@ -9,7 +9,7 @@ To use r2redux:
 or
 -	install.packages("devtools")
 -	library(devtools)
--	devtools::install_github("mommy003/r2redux_version4")
+-	devtools::install_github("mommy003/r2redux")
 -	library(r2redux)
 
 
