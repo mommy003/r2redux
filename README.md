@@ -18,7 +18,7 @@ We illustrate the usage of r2redux using multiple sets of PGS estimated based on
 
 # DATA PREPARATION
 **a.	Statistical testing of significant difference between R2 values for p-value thresholds:** 
-r2redux requires only phenotype and estimated PGS (from PLINK or any other software). Note that any missing value in the phenotypes and PGS tested in the model should be removed. If we want to test the significant difference of R^2 values for p-value thresholds, r2_diff function can be used with an input file that includes the following fields (also see test_ukbb_thresholds_scaled in the example directory form github  (https://github.com/mommy003/r2redux_version4)  or read dat1 file embedded within the package and r2_diff function in the manual).
+r2redux requires only phenotype and estimated PGS (from PLINK or any other software). Note that any missing value in the phenotypes and PGS tested in the model should be removed. If we want to test the significant difference of R^2 values for p-value thresholds, r2_diff function can be used with an input file that includes the following fields (also see test_ukbb_thresholds_scaled in the example directory form github  (https://github.com/mommy003/r2redux)  or read dat1 file embedded within the package and r2_diff function in the manual).
 
 
 - Phenotype (y)
