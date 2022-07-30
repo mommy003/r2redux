@@ -1,7 +1,15 @@
+#' olkin12_13 function
+#' @export
+#' @importFrom stats D cor dnorm lm logLik pchisq qchisq qnorm
+#' @param omat 3 by 3 matrix having the correlation coefficients between y, x1 and x2, i.e. omat=cor(dat) where dat is N by 3 matrix having variables in the order of cbind (y,x1,x2)
+#' @param nv Sample size
+#' @keywords source  
+#' @return This function will be used as source code
+
 
   olkin12_13 = function (omat,nv) {
 
-  #aøa in p158 in Olkin and Finn (using my own code)
+  #aova in p158 in Olkin and Finn (using my own code)
   av=array(0,5)
   f=expression((c22 * ((c33/(c22 * c33 - c32^2)) * c21 + (c32/(c32^2 - 
     c22 * c33)) * c31)^2 + 2 * c32 * (((c33/(c22 * c33 - c32^2)) * 
@@ -32,65 +40,65 @@
   av[5]=eval(D(f,'c42'))
 
 
-  ø=matrix(0,5,5)
-  ø[1,1]=(1-omat[2,1]^2)^2/nv
-  ø[2,2]=(1-omat[3,1]^2)^2/nv
-  ø[3,3]=(1-omat[4,1]^2)^2/nv
-  ø[4,4]=(1-omat[3,2]^2)^2/nv
-  ø[5,5]=(1-omat[4,2]^2)^2/nv
+  ov=matrix(0,5,5)
+  ov[1,1]=(1-omat[2,1]^2)^2/nv
+  ov[2,2]=(1-omat[3,1]^2)^2/nv
+  ov[3,3]=(1-omat[4,1]^2)^2/nv
+  ov[4,4]=(1-omat[3,2]^2)^2/nv
+  ov[5,5]=(1-omat[4,2]^2)^2/nv
 
-  ø[2,1]=(0.5*(2*omat[3,2]-omat[2,1]*omat[3,1])*(1-omat[3,2]^2-omat[2,1]^2-omat[3,1]^2)+omat[3,2]^3)/nv
-  ø[1,2]=ø[2,1]
+  ov[2,1]=(0.5*(2*omat[3,2]-omat[2,1]*omat[3,1])*(1-omat[3,2]^2-omat[2,1]^2-omat[3,1]^2)+omat[3,2]^3)/nv
+  ov[1,2]=ov[2,1]
 
-  ø[3,1]=(0.5*(2*omat[4,2]-omat[2,1]*omat[4,1])*(1-omat[4,2]^2-omat[2,1]^2-omat[4,1]^2)+omat[4,2]^3)/nv
-  ø[1,3]=ø[3,1]
+  ov[3,1]=(0.5*(2*omat[4,2]-omat[2,1]*omat[4,1])*(1-omat[4,2]^2-omat[2,1]^2-omat[4,1]^2)+omat[4,2]^3)/nv
+  ov[1,3]=ov[3,1]
 
-  ø[3,2]=(0.5*(2*omat[4,3]-omat[3,1]*omat[4,1])*(1-omat[4,3]^2-omat[3,1]^2-omat[4,1]^2)+omat[4,3]^3)/nv
-  ø[2,3]=ø[3,2]
+  ov[3,2]=(0.5*(2*omat[4,3]-omat[3,1]*omat[4,1])*(1-omat[4,3]^2-omat[3,1]^2-omat[4,1]^2)+omat[4,3]^3)/nv
+  ov[2,3]=ov[3,2]
 
-  ø[4,1]=(0.5*(2*omat[3,1]-omat[2,1]*omat[3,2])*(1-omat[3,2]^2-omat[2,1]^2-omat[3,1]^2)+omat[3,1]^3)/nv
-  ø[1,4]=ø[4,1]
+  ov[4,1]=(0.5*(2*omat[3,1]-omat[2,1]*omat[3,2])*(1-omat[3,2]^2-omat[2,1]^2-omat[3,1]^2)+omat[3,1]^3)/nv
+  ov[1,4]=ov[4,1]
 
-  ø[4,2]=(0.5*(2*omat[2,1]-omat[3,1]*omat[3,2])*(1-omat[3,2]^2-omat[2,1]^2-omat[3,1]^2)+omat[2,1]^3)/nv
-  ø[2,4]=ø[4,2]
+  ov[4,2]=(0.5*(2*omat[2,1]-omat[3,1]*omat[3,2])*(1-omat[3,2]^2-omat[2,1]^2-omat[3,1]^2)+omat[2,1]^3)/nv
+  ov[2,4]=ov[4,2]
 
-  ø[4,3]=omat[2,1]^2+omat[3,1]^2+omat[4,2]^2+omat[4,3]^2
-  ø[4,3]=ø[4,3]*0.5*omat[4,1]*omat[3,2]
-  ø[4,3]=ø[4,3]+omat[2,1]*omat[4,3]+omat[3,1]*omat[4,2]
-  ø[4,3]=ø[4,3]-omat[4,1]*omat[2,1]*omat[3,1]
-  ø[4,3]=ø[4,3]-omat[4,1]*omat[4,2]*omat[4,3]
-  ø[4,3]=ø[4,3]-omat[2,1]*omat[4,2]*omat[3,2]
-  ø[4,3]=ø[4,3]-omat[3,1]*omat[4,3]*omat[3,2]
-  ø[4,3]=ø[4,3]/nv 
-  ø[3,4]=ø[4,3] 
+  ov[4,3]=omat[2,1]^2+omat[3,1]^2+omat[4,2]^2+omat[4,3]^2
+  ov[4,3]=ov[4,3]*0.5*omat[4,1]*omat[3,2]
+  ov[4,3]=ov[4,3]+omat[2,1]*omat[4,3]+omat[3,1]*omat[4,2]
+  ov[4,3]=ov[4,3]-omat[4,1]*omat[2,1]*omat[3,1]
+  ov[4,3]=ov[4,3]-omat[4,1]*omat[4,2]*omat[4,3]
+  ov[4,3]=ov[4,3]-omat[2,1]*omat[4,2]*omat[3,2]
+  ov[4,3]=ov[4,3]-omat[3,1]*omat[4,3]*omat[3,2]
+  ov[4,3]=ov[4,3]/nv 
+  ov[3,4]=ov[4,3] 
 
 
-  ø[5,1]=(0.5*(2*omat[4,1]-omat[2,1]*omat[4,2])*(1-omat[4,2]^2-omat[2,1]^2-omat[4,1]^2)+omat[4,1]^3)/nv
-  ø[1,5]=ø[5,1]
+  ov[5,1]=(0.5*(2*omat[4,1]-omat[2,1]*omat[4,2])*(1-omat[4,2]^2-omat[2,1]^2-omat[4,1]^2)+omat[4,1]^3)/nv
+  ov[1,5]=ov[5,1]
 
   
-  ø[5,2]=omat[2,1]^2+omat[4,1]^2+omat[3,2]^2+omat[4,3]^2
-  ø[5,2]=ø[5,2]*0.5*omat[3,1]*omat[4,2]
-  ø[5,2]=ø[5,2]+omat[2,1]*omat[4,3]+omat[4,1]*omat[3,2]
-  ø[5,2]=ø[5,2]-omat[3,1]*omat[2,1]*omat[4,1]
-  ø[5,2]=ø[5,2]-omat[3,1]*omat[3,2]*omat[4,2]
-  ø[5,2]=ø[5,2]-omat[2,1]*omat[3,2]*omat[4,2]
-  ø[5,2]=ø[5,2]-omat[4,1]*omat[4,3]*omat[4,2]
-  ø[5,2]=ø[5,2]/nv 
-  ø[2,5]=ø[5,2] 
+  ov[5,2]=omat[2,1]^2+omat[4,1]^2+omat[3,2]^2+omat[4,3]^2
+  ov[5,2]=ov[5,2]*0.5*omat[3,1]*omat[4,2]
+  ov[5,2]=ov[5,2]+omat[2,1]*omat[4,3]+omat[4,1]*omat[3,2]
+  ov[5,2]=ov[5,2]-omat[3,1]*omat[2,1]*omat[4,1]
+  ov[5,2]=ov[5,2]-omat[3,1]*omat[3,2]*omat[4,2]
+  ov[5,2]=ov[5,2]-omat[2,1]*omat[3,2]*omat[4,2]
+  ov[5,2]=ov[5,2]-omat[4,1]*omat[4,3]*omat[4,2]
+  ov[5,2]=ov[5,2]/nv 
+  ov[2,5]=ov[5,2] 
 
 
-  ø[5,3]=(0.5*(2*omat[2,1]-omat[4,1]*omat[4,2])*(1-omat[4,2]^2-omat[2,1]^2-omat[4,1]^2)+omat[2,1]^3)/nv
-  ø[3,5]=ø[5,3]
+  ov[5,3]=(0.5*(2*omat[2,1]-omat[4,1]*omat[4,2])*(1-omat[4,2]^2-omat[2,1]^2-omat[4,1]^2)+omat[2,1]^3)/nv
+  ov[3,5]=ov[5,3]
 
-  ø[5,4]=(0.5*(2*omat[4,3]-omat[3,2]*omat[4,2])*(1-omat[4,2]^2-omat[4,3]^2-omat[3,2]^2)+omat[4,3]^3)/nv
-  ø[4,5]=ø[5,4]
+  ov[5,4]=(0.5*(2*omat[4,3]-omat[3,2]*omat[4,2])*(1-omat[4,2]^2-omat[4,3]^2-omat[3,2]^2)+omat[4,3]^3)/nv
+  ov[4,5]=ov[5,4]
 
 
 
   #variance of the difference
-  aøa=t(av)%*%ø%*%(av)
-  #return(aøa) 
+  aova=t(av)%*%ov%*%(av)
+  #return(aova) 
 
   }
 

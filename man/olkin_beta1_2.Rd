@@ -9,7 +9,14 @@ olkin_beta1_2(omat, nv)
 \arguments{
 \item{omat}{3 by 3 matrix having the correlation coefficients between y, x1 and x2, i.e. omat=cor(dat) where dat is N by 3 matrix having variables in the order of cbind (y,x1,x2)}
 
-\item{nv}{sample size}
+\item{nv}{Sample size}
+}
+\value{
+This function will give information (variance-covariance) matrix of beta1^2 and beta2^2.To get information (variance-covariance) matrix of beta1^2 and beta2^2. Where beta1 and beta2 are regression coefficients from a multiple regression model. The outputs are listed as follows.
+\item{info}{2x2 information (variance-covariance) matrix}
+\item{var1}{Variance of beta1^2}
+\item{var2}{Variance of beta2^2}
+\item{var1_2}{Variance of difference between beta1^2 and beta2^2}
 }
 \description{
 This function derives Information matrix for beta1^2 and beta2^2
@@ -18,36 +25,34 @@ i.e. y = x1•beta1 + x2•beta2 + e, where y, x1 and x2 are column-standardised
 (i.e. in the context of correlation coefficients,see Olkin and Finn 1995).
 }
 \examples{
-To get information (variance-covariance) matrix of beta1^2 and beta2^2 where 
-beta1 and 2 are regression coefficients from a multiple regression model.
-
-dat=read.table("test_ukbb_thresholds_scaled") (see example files)
+#To get information (variance-covariance) matrix of beta1_2 and beta2_2 where 
+#beta1 and 2 are regression coefficients from a multiple regression model.
+dat=dat1
 omat=cor(dat)[1:3,1:3]
-omat
-1.0000000 0.1958636 0.1970060
-0.1958636 1.0000000 0.9981003
-0.1970060 0.9981003 1.0000000
+#omat
+#1.0000000 0.1958636 0.1970060
+#0.1958636 1.0000000 0.9981003
+#0.1970060 0.9981003 1.0000000
 
 nv=length(dat$V1)
 output=olkin_beta1_2(omat,nv) 
 output
 
-output$info (2x2 information (variance-covariance) matrix)
-0.04146276 0.08158261
-0.08158261 0.16111124             
+#output$info (2x2 information (variance-covariance) matrix)
+#0.04146276 0.08158261
+#0.08158261 0.16111124             
 
-output$var1 (variance of beta1^2)
-0.04146276 
+#output$var1 (variance of beta1^2)
+#0.04146276 
             
-output$var2 (variance of beta2^2)
-0.1611112
+#output$var2 (variance of beta2^2)
+#0.1611112
 
-output$var1_2 (variance of difference between beta1^2 and beta2^2)
-0.03940878        
+#output$var1_2 (variance of difference between beta1^2 and beta2^2)
+#0.03940878
 }
 \references{
 Olkin, I. and J.D. Finn, Correlations redux. Psychological Bulletin, 1995. 118(1): p. 155.
-Momin, M.M., Lee, S. Wray, N. and S. Lee, S.H. The variance and covariance of the coefficients of determination for genetic profile analysis (will be subbitted soon)
 }
 \keyword{context}
 \keyword{correlation}

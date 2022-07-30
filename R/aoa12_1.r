@@ -1,7 +1,15 @@
+#' olkin12_1 function
+#' @export
+#' @importFrom stats D cor dnorm lm logLik pchisq qchisq qnorm  
+#' @param omat 3 by 3 matrix having the correlation coefficients between y, x1 and x2, i.e. omat=cor(dat) where dat is N by 3 matrix having variables in the order of cbind (y,x1,x2)
+#' @param nv Sample size
+#' @keywords source 
+#' @return This function will be used as source code
+
 
   olkin12_1 = function (omat,nv) {
 
-  #aøa in p158 in Olkin and Finn (using my own code)
+  #aova in p158 in Olkin and Finn (using my own code)
   f=expression((c22 * ((c33/(c22 * c33 - c32^2)) * c21 + (c32/(c32^2 - 
     c22 * c33)) * c31)^2 + 2 * c32 * (((c33/(c22 * c33 - c32^2)) * 
     c21 + (c32/(c32^2 - c22 * c33)) * c31) * ((c32/(c32^2 - c22 * 
@@ -21,20 +29,20 @@
   av[2]=eval(D(f,'c31'))
   av[3]=eval(D(f,'c32'))
 
-  ø=matrix(0,3,3)
-  ø[1,1]=(1-omat[2,1]^2)^2/nv
-  ø[2,2]=(1-omat[3,1]^2)^2/nv
-  ø[3,3]=(1-omat[3,2]^2)^2/nv
-  ø[2,1]=(0.5*(2*omat[3,2]-omat[2,1]*omat[3,1])*(1-omat[3,2]^2-omat[2,1]^2-omat[3,1]^2)+omat[3,2]^3)/nv
-  ø[1,2]=ø[2,1]
-  ø[3,1]=(0.5*(2*omat[3,1]-omat[2,1]*omat[3,2])*(1-omat[3,2]^2-omat[2,1]^2-omat[3,1]^2)+omat[3,1]^3)/nv
-  ø[1,3]=ø[3,1]
-  ø[3,2]=(0.5*(2*omat[2,1]-omat[3,1]*omat[3,2])*(1-omat[3,2]^2-omat[2,1]^2-omat[3,1]^2)+omat[2,1]^3)/nv
-  ø[2,3]=ø[3,2]
+  ov=matrix(0,3,3)
+  ov[1,1]=(1-omat[2,1]^2)^2/nv
+  ov[2,2]=(1-omat[3,1]^2)^2/nv
+  ov[3,3]=(1-omat[3,2]^2)^2/nv
+  ov[2,1]=(0.5*(2*omat[3,2]-omat[2,1]*omat[3,1])*(1-omat[3,2]^2-omat[2,1]^2-omat[3,1]^2)+omat[3,2]^3)/nv
+  ov[1,2]=ov[2,1]
+  ov[3,1]=(0.5*(2*omat[3,1]-omat[2,1]*omat[3,2])*(1-omat[3,2]^2-omat[2,1]^2-omat[3,1]^2)+omat[3,1]^3)/nv
+  ov[1,3]=ov[3,1]
+  ov[3,2]=(0.5*(2*omat[2,1]-omat[3,1]*omat[3,2])*(1-omat[3,2]^2-omat[2,1]^2-omat[3,1]^2)+omat[2,1]^3)/nv
+  ov[2,3]=ov[3,2]
 
   #variance of the difference
-  aøa=t(av)%*%ø%*%(av)
-  #return(aøa) 
+  aova=t(av)%*%ov%*%(av)
+  #return(aova) 
 
   }
 

@@ -13,7 +13,20 @@ r2_diff(dat, v1, v2, nv)
 
 \item{v2}{This can be set as v2=c(2), v2=c(3), v2=c(1,3) or v2=c(3,4)}
 
-\item{nv}{sample size}
+\item{nv}{Sample size}
+}
+\value{
+This function will estimate significant difference between two PGS (either dependent or independent and joint or single). To get the test statistics for the difference between R2(y~x[,v1]) and R2(y~x[,v2]). (here we define R2_1=R2(y~x[,v1])) and R2_2=R2(y~x[,v2]))). The outputs are listed as follows.
+\item{rsq1}{R2_1}
+\item{rsq2}{R2_2}
+\item{var1}{Variance of R2_1}
+\item{var2}{variance of R2_2}
+\item{var_diff}{Variance of difference between R2_1 and R2_2}
+\item{r2_based_p}{two tailed P-value for significant difference between R2_1 and R2_2}
+\item{r2_based_p_one_tail}{one tailed P-value for significant difference}
+\item{mean_diff}{Differences between R2_1 and R2_2}
+\item{upper_diff}{Upper limit of 95\% CI for the difference}
+\item{lower_diff}{Lower limit of 95\% CI for the difference}
 }
 \description{
 This function estimates var(R2(y~x[,v1]) - R2(y~x[,v2]))
@@ -24,75 +37,86 @@ v1 or v2 indicates the ith column in the x matrix
 (v1 or v2 can be multiple values between 1 - M, see Arguments below)
 }
 \examples{
-To get the test statistics for the difference between R2(y~x[,v1]) and 
-R2(y~x[,v2]). (here we define R2_1=R2(y~x[,v1])) and R2_2=R2(y~x[,v2])))
+#To get the test statistics for the difference between R2(y~x[,v1]) and 
+#R2(y~x[,v2]). (here we define R2_1=R2(y~x[,v1])) and R2_2=R2(y~x[,v2])))
 
-dat=read.table("test_ukbb_thresholds_scaled") (see example files)
+dat=dat1
 nv=length(dat$V1)
 v1=c(1)
 v2=c(2)
 output=r2_diff(dat,v1,v2,nv)
 output
 
-r2redux output
+#r2redux output
 
-output$var1 (variance of R2_1)
-0.0001437583
+#output$rsq1 (R2_1)
+#0.03836254
 
-output$var2 (variance of R2_2)
-0.0001452828
+#output$rsq2 (R2_2)
+#0.03881135
 
-output$var_diff (variance of difference between R2_1 and R2_2)
-5.678517e-07
+#output$var1 (variance of R2_1)
+#0.0001436128
 
-output$r2_based_p (p-value for significant difference between R2_1 and R2_2)
-0.5514562
+#output$var2 (variance of R2_2)
+#0.0001451358
 
-output$mean_diff (differences between R2_1 and R2_2)
--0.0004488044
+#output$var_diff (variance of difference between R2_1 and R2_2)
+#5.678517e-07
 
-output$upper_diff (upper limit of 95\% CI for the difference)
-0.001028172
+#output$r2_based_p (two tailed p-value for significant difference between R2_1 and R2_2)
+#0.5514562
 
-output$lower_diff (lower limit of 95\% CI for the difference)
--0.001925781
+#output$r2_based_p_one_tail(one tailed p-value for significant difference)
+#0.2757281
+
+#output$mean_diff (differences between R2_1 and R2_2)
+#-0.0004488044
+
+#output$upper_diff (upper limit of 95\% CI for the difference)
+#0.001028172
+
+#output$lower_diff (lower limit of 95\% CI for the difference)
+#-0.001925781
 
 
+#To get the test statistics for the difference between R2(y~x[,v1]+x[,v2]) and 
+#R2(y~x[,v2]). (here R2_1=R2(y~x[,v1]+x[,v2]) and R2_2=R2(y~x[,v1]))
 
-To get the test statistics for the difference between R2(y~x[,v1]+x[,v2]) and 
-R2(y~x[,v2]). (here R2_1=R2(y~x[,v1]+x[,v2]) and R2_2=R2(y~x[,v1]))
-
-dat=read.table("test_ukbb_thresholds_scaled") (see example files)
+dat=dat1
 nv=length(dat$V1)
 v1=c(1,2)
 v2=c(1)
 output=r2_diff(dat,v1,v2,nv)
-output
 
-r2redux output
+#r2redux output
 
-output$var1 (variance of R2_1)
-0.0001475195
+#output$rsq1 (R2_1)
+#0.03896678
 
-output$var2 (variance of R2_2)
-0.0001437583
+#output$rsq2 (R2_2)
+#0.03836254
 
-output$var_diff (variance of difference between R2_1 and R2_2)
-2.321425e-06
+#output$var1 (variance of R2_1)
+#0.0001473686
 
-output$r2_based_p (p-value for significant difference between R2_1 and R2_2)
-0.4369177
+#output$var2 (variance of R2_2)
+#0.0001436128
 
-output$mean_diff (differences between R2_1 and R2_2)
-0.0006042383
+#output$var_diff (variance of difference between R2_1 and R2_2)
+#2.321425e-06
 
-output$upper_diff (upper limit of 95\% CI for the difference)
-0.004887989
+#output$r2_based_p (p-value for significant difference between R2_1 and R2_2)
+#0.4366883
 
-output$lower_diff (lower limit of 95\% CI for the difference)
--0.0005574975
+#output$mean_diff (differences between R2_1 and R2_2)
+#0.0006042383
 
+#output$upper_diff (upper limit of 95\% CI for the difference)
+#0.00488788
 
+#output$lower_diff (lower limit of 95\% CI for the difference)
+#-0.0005576171
 }
 \keyword{R2}
 \keyword{information}
