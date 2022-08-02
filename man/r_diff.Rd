@@ -16,7 +16,7 @@ r_diff(dat, v1, v2, nv)
 \item{nv}{Sample size}
 }
 \value{
-This function will estimate significant difference between two PGS (either dependent or independent and joint or single). To get the test statistics for the difference between R2(y~x[,v1]) and R2(y~x[,v2]). (here we define R2_1=R2(y~x[,v1])) and R2_2=R2(y~x[,v2]))). The outputs are listed as follows.
+This function will estimate significant difference between two PGS (either dependent or independent and joint or single). To get the test statistics for the difference between R(y~x[,v1]) and R(y~x[,v2]). (here we define R_1=R(y~x[,v1])) and R_2=R(y~x[,v2]))). The outputs are listed as follows.
 \item{r1}{R_1}
 \item{r2}{R_2}
 \item{var1}{Variance of R_1}
