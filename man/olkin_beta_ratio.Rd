@@ -12,13 +12,13 @@ olkin_beta_ratio(omat, nv)
 \item{nv}{sampel size}
 }
 \value{
-This function will generate information (variance-covariance) matrix of beta1 and beta2.The outputs are listed as follows.
+This function will generate the variance of the proportion, i.e. beta1^2/R^2.The outputs are listed as follows.
 \item{ratio_var}{Variance of ratio}
 }
 \description{
 This function derives variance of beta1^2 / R^2
 where beta1 and 2 are regression coefficients from a multiple regression model,
-i.e. y = x1.beta1 + x2.beta2 + e, where y, x1 and x2 are column-standardised
+i.e. y = x1\emph{beta1 + x2}beta2 + e, where y, x1 and x2 are column-standardised
 (see Olkin and Finn 1995).
 }
 \examples{
@@ -41,7 +41,7 @@ output
 #27.20206
 }
 \references{
-Olkin, I. and J.D. Finn, Correlations redux. Psychological Bulletin, 1995. 118(1): p. 155.
+Olkin, I. and Finn, J.D. Correlations redux. Psychological Bulletin, 1995. 118(1): p. 155.
 }
 \keyword{context}
 \keyword{correlation}

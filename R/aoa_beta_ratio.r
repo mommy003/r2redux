@@ -2,16 +2,16 @@
   #'
   #' This function derives variance of beta1^2 / R^2 
   #' where beta1 and 2 are regression coefficients from a multiple regression model,
-  #' i.e. y = x1.beta1 + x2.beta2 + e, where y, x1 and x2 are column-standardised
+  #' i.e. y = x1*beta1 + x2*beta2 + e, where y, x1 and x2 are column-standardised
   #' (see Olkin and Finn 1995).
   #' @references
-  #' Olkin, I. and J.D. Finn, Correlations redux. Psychological Bulletin, 1995. 118(1): p. 155.
+  #' Olkin, I. and Finn, J.D. Correlations redux. Psychological Bulletin, 1995. 118(1): p. 155.
   #' @param omat 3 by 3 matrix having the correlation coefficients between y, x1 and x2, i.e. omat=cor(dat) where dat is N by 3 matrix having variables in the order of cbind (y,x1,x2)
   #' @param nv sampel size
   #' @keywords information matrix in the context of correlation
   #' @export
   #' @importFrom stats D cor dnorm lm logLik pchisq qchisq qnorm
-  #' @return  This function will generate information (variance-covariance) matrix of beta1 and beta2.The outputs are listed as follows.
+  #' @return  This function will generate the variance of the proportion, i.e. beta1^2/R^2.The outputs are listed as follows.
   #' \item{ratio_var}{Variance of ratio}
   #' @examples
   #' #To get information (variance-covariance) matrix of beta1 and beta2 where 

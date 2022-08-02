@@ -17,8 +17,8 @@ r_diff(dat, v1, v2, nv)
 }
 \value{
 This function will estimate significant difference between two PGS (either dependent or independent and joint or single). To get the test statistics for the difference between R2(y~x[,v1]) and R2(y~x[,v2]). (here we define R2_1=R2(y~x[,v1])) and R2_2=R2(y~x[,v2]))). The outputs are listed as follows.
-\item{r1}{R2_1}
-\item{r2}{R2_2}
+\item{r1}{R_1}
+\item{r2}{R_2}
 \item{var1}{Variance of R_1}
 \item{var2}{variance of R_2}
 \item{var_diff}{Variance of difference between R_1 and R_2}
@@ -52,7 +52,7 @@ output
 #output$r1 (R_1)
 #0.1958636
 
-#output$r2 (R-2)
+#output$r2 (R_2)
 #0.197006
 
 #output$var1 (variance of R_1)
@@ -64,10 +64,10 @@ output
 #output$var_diff (variance of difference between R_1 and R_2)
 #3.65286e-06
 
-#output$r_based_p (two tailed p-value for significant difference between R2_1 and R2_2)
+#output$r_based_p (two tailed p-value for significant difference between R_1 and R_2)
 #0.5500319
 
-#output$r_based_p_one_tail (one tailed p-value for significant difference between R2_1 and R2_2)
+#output$r_based_p_one_tail (one tailed p-value for significant difference between R_1 and R_2)
 #0.2750159
 
 #output$mean_diff
@@ -89,32 +89,32 @@ v2=c(2)
 output=r_diff(dat,v1,v2,nv)
 output
 
-#output$rsq1
-#0.03896678
+#output$r1
+#0.1974001
 
-#output$rsq2
-#0.03881135
+#output$r2
+#0.197006
 
 #output$var1
-#0.0001473686
+#0.0009235848
 
 #output$var2
-#0.0001451358
+#0.0009238836
 
 #output$var_diff
-#5.974193e-07
+#3.837451e-06
 
 #output$r2_based_p
-#0.6933505
+#0.8405593
 
 #output$mean_diff
-#0.0001554339
+#0.0003940961
 
 #output$upper_diff
-#0.002355053
+#0.004233621
 
 #output$lower_diff
-#-0.0003955781
+#-0.003445429
 }
 \keyword{R2}
 \keyword{information}

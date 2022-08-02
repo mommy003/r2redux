@@ -5,7 +5,7 @@
   #' i.e. y = x1 * beta1 + x2 * beta2 + e, where y, x1 and x2 are column-standardised   
   #' (see Olkin and Finn 1995).
   #' @references
-  #' Olkin, I. and J.D. Finn, Correlations redux. Psychological Bulletin, 1995. 118(1): p. 155.
+  #' Olkin, I. and Finn, J.D. Correlations redux. Psychological Bulletin, 1995. 118(1): p. 155.
   #' @param omat 3 by 3 matrix having the correlation coefficients between y, x1 and x2, i.e. omat=cor(dat) where dat is N by 3 matrix having variables in the order of cbind (y,x1,x2)
   #' @param nv Sample size
   #' @keywords information matrix in the context of correlation

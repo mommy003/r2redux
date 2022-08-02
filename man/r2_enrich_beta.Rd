@@ -19,9 +19,9 @@ r2_enrich_beta(dat, v1, v2, nv, exp1)
 }
 \value{
 This function will test the ratio which is significantly different from the expectation.To get the test statistic for the ratio which is significantly different from the expectation. var[(t1/exp)-(t2/(1-exp))], where t1 = beta1^2 and t2 = beta2^2. beta1 and beta2 are regression coefficients from a multiple regression model, i.e. y = x1.beta1 + x2.beta2 +e, where y, x1 and x2 are column-standardised. The outputs are listed as follows.
-\item{beta1_sq}{t1}
-\item{beta2_sq}{t2}
-\item{ratio1}{t1/R^2}
+\item{beta1_sq}{beta1_sq}
+\item{beta2_sq}{beta2_sq}
+\item{ratio1}{beta1_sq/R^2}
 \item{ratio2}{t1/R^2}
 \item{ratio_var1}{variance of ratio 1}
 \item{ratio_var2}{variance of ratio 2}
@@ -29,30 +29,31 @@ This function will test the ratio which is significantly different from the expe
 \item{lower_ratio1}{lower limit of 95\% CI for ratio 1}
 \item{upper_ratio2}{upper limit of 95\% CI for ratio 2}
 \item{lower_ratio2}{lower limit of 95\% CI for ratio 2}
-\item{enrich_p1}{two tailed P-value for t1/R^2 is significantly different from exp1}
-\item{enrich_p1_one_tail}{one tailed P-value for t1/R^2 is significantly different from exp1}
-\item{enrich_p2}{P-value for t2/R2 is significantly different from (1-exp1)}
-\item{enrich_p2_one_tail}{one tailed P-value for t2/R2 is significantly different from (1-exp1)}
+\item{enrich_p1}{two tailed P-value for beta1_sq/R^2 is significantly different from exp1}
+\item{enrich_p1_one_tail}{one tailed P-value for beta1_sq/R^2 is significantly different from exp1}
+\item{enrich_p2}{P-value for beta2_sq/R2 is significantly different from (1-exp1)}
+\item{enrich_p2_one_tail}{one tailed P-value for beta2_sq/R2 is significantly different from (1-exp1)}
 }
 \description{
-This function estimates var((t1/exp) - (t2/(1-exp))),
-where t1 = beta1^2 and t2 = beta2^2, and
-beta1 and 2 are regression coefficients from a multiple regression model,
-i.e. y = x1.beta1 + x2.beta2 +e, where y, x1 and x2 are column-standardised
+This function estimates var(beta1^2/R^2),
+beta1 and R^2 are regression coefficient and the coefficient
+of determination from a multiple regression model,
+i.e. y = x1\emph{beta1 + x2}beta2 +e, where y, x1 and x2 are column-standardised
 (see Olkin and Finn 1995).
 y is N by 1 matrix having the dependent variable, and
 x1 is N by 1 matrix having the ith explanatory variables.
 x2 is N by 1 matrix having the jth explanatory variables.
 v1 and v2 indicates the ith and jth column in the data
 (v1 or v2 should be a single interger between 1 - M, see Arguments below).
-Note that r2_enrich (above) and r2_enrich_beta is equivalent (identical p-value derived).
 }
 \examples{
 #To get the test statistic for the ratio which is significantly
-#different from the expectation.
-#var[(t1/exp) - (t2/(1-exp))], where t1 = beta1^2 and t2 = beta2^2.
-#beta1 and beta2 are regression coefficients from a multiple regression model,
-#i.e. y = x1.beta1 + x2.beta2 +e, where y, x1 and x2 are column-standardised.
+#different from the expectation, this function estiamtes 
+#var (beta1^2/R^2), where 
+#beta1^2 and R^2 are regression coefficients and the 
+#coefficient of dterminationfrom a multiple regression model,
+#i.e. y = x1*beta1 + x2*beta2 +e, where y, x1 and x2 are 
+#column-standardised.
 
 dat=dat2
 nv=length(dat$V1)
@@ -64,16 +65,16 @@ output
 
 #r2redux output
 
-#output$beta1_sq (t1)
+#output$beta1_sq (beta1_sq)
 #0.01118301
 
-#output$beta2_sq (t2)
+#output$beta2_sq (beta2_sq)
 #0.004980285
 
-#output$ratio1 (t1/R^2)
+#output$ratio1 (beta1_sq/R^2)
 #0.4392572
 
-#output$ratio2 (t2/R^2)
+#output$ratio2 (beta2_sq/R^2)
 #0.1956205
 
 #output$ratio_var1 (variance of ratio 1)
@@ -94,20 +95,24 @@ output
 #output$lower_ratio2 (lower limit of 95\% CI for ratio 2)
 #-0.2113493
 
-#output$enrich_p1 (two tailed P-value for t1/R^2 is significantly different from exp1)
+#output$enrich_p1 (two tailed P-value for beta1_sq/R^2 is 
+#significantly different from exp1)
 #0.1591692
 
-#output$enrich_p1_one_tail (one tailed P-value for t1/R^2 is significantly different from exp1)
+#output$enrich_p1_one_tail (one tailed P-value for beta1_sq/R^2 
+#is significantly different from exp1)
 #0.07958459
 
-#output$enrich_p2 (P-value for t2/R2 is significantly different from (1-exp1))
+#output$enrich_p2 (P-value for beta2_sq/R2 is significantly
+#different from (1-exp1))
 #0.000232035
 
-#output$enrich_p2_one_tail (one tailed P-value for t2/R2 is significantly different from (1-exp1))
+#output$enrich_p2_one_tail (one tailed P-value for beta2_sq/R2 is 
+#significantly different from (1-exp1))
 #0.0001160175
 }
 \references{
-Olkin, I. and J.D. Finn, Correlations redux. Psychological Bulletin, 1995. 118(1): p. 155.
+Olkin, I. and Finn, J.D. Correlations redux. Psychological Bulletin, 1995. 118(1): p. 155.
 }
 \keyword{a}
 \keyword{beta^2}

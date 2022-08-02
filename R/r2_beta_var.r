@@ -1,30 +1,29 @@
   
 #' r2_beta_var 
 #'
-#' This function estimates var((t1/exp) - (t2/(1-exp))), 
-#' where t1 = beta1^2 and t2 = beta2^2, and
+#' This function estimates var(beta1^2) and (beta2^2), and
 #' beta1 and 2 are regression coefficients from a multiple regression model,
-#' i.e. y = x1.beta1 + x2.beta2 +e, where y, x1 and x2 are column-standardised
+#' i.e. y = x1*beta1 + x2*beta2 +e, y, x1 and x2 are column-standardised
 #' (see Olkin and Finn 1995).
-#' y is N by 1 matrix having the dependent variable, and
-#' x1 is N by 1 matrix having the ith explanatory variables.
-#' x2 is N by 1 matrix having the jth explanatory variables.
+#' y is N by 1 matrix having the dependent variable, 
+#' x1 is N by 1 matrix having the ith explanatory variable.
+#' x2 is N by 1 matrix having the jth explanatory variable.
 #' v1 and v2 indicates the ith and jth column in the data
 #' (v1 or v2 should be a single interger between 1 - M, see Arguments below).
 #' @references
-#' Olkin, I. and J.D. Finn, Correlations redux. Psychological Bulletin, 1995. 118(1): p. 155.
+#' Olkin, I. and Finn, J.D. Correlations redux. Psychological Bulletin, 1995. 118(1): p. 155.
 #' @param dat N by (M+1) matrix having variables in the order of cbind(y,x)
-#' @param v1 These can be set as v1=1, v1=2, v1=3  or any value between 1 - M based on combination
-#' @param v2 These can be set as v2=1, v2=2, v2=3, or any value between 1 - M based on combination 
+#' @param v1 This can be set as v1=1, v1=2, v1=3  or any value between 1 - M based on combination
+#' @param v2 This can be set as v2=1, v2=2, v2=3, or any value between 1 - M based on combination 
 #' @param nv Sample size
 #' @keywords variance of beta^2 from a multiple regression
 #' @export
 #' @importFrom stats D cor dnorm lm logLik pchisq qchisq qnorm
-#' @return  This function will test the ratio which is significantly different from the expectation.To get the test statistic for the ratio which is significantly different from the expectation. var\[(t1/exp)-(t2/(1-exp))], where t1 = beta1^2 and t2 = beta2^2. beta1 and beta2 are regression coefficients from a multiple regression model, i.e. y = x1.beta1 + x2.beta2 +e, where y, x1 and x2 are column-standardised. The outputs are listed as follows.
-#' \item{beta1_sq}{t1}
-#' \item{beta2_sq}{t2}
-#' \item{var1}{Variance of t1}
-#' \item{var2}{Variance of t2}
+#' @return  This function will estiamte the variance of beta1^2 and beta2^2 and, and the covariance between beta1^2 and beta2^2, i.e. the information matrix of squared regression coefficients. beta1 and beta2 are regression coefficients from a multiple regression model, i.e. y = x1*beta1 + x2*beta2 +e, where y, x1 and x2 are column-standardised. The outputs are listed as follows.
+#' \item{beta1_sq}{beta1_sq}
+#' \item{beta2_sq}{beta2_sq}
+#' \item{var1}{Variance of beta1_sq}
+#' \item{var2}{Variance of beta2_sq}
 #' \item{var1_2}{Variance of difference between t1 and t2}
 #' \item{cov}{Covariance between t1 and t2}
 #' \item{upper_beta1_sq}{upper limit of 95% CI for beta1_sq}
@@ -43,19 +42,19 @@
 #' output=r2_beta_var(dat,v1,v2,nv)
 #' output
 #' #r2redux output
-#' #output$beta1_sq (t1)
+#' #output$beta1_sq (beta1_sq)
 #' #0.01118301
 #' 
-#' #output$beta2_sq (t2)
+#' #output$beta2_sq (beta2_sq)
 #' #0.004980285
 #' 
-#' #output$var1 (variance of t1)
+#' #output$var1 (variance of beta1_sq)
 #' #7.072931e-05
 #' 
-#' #output$var2 (variance of t2)
+#' #output$var2 (variance of beta2_sq)
 #' #3.161929e-05
 #' 
-#' #output$var1_2 (variance of difference between t1 and t2)
+#' #output$var1_2 (variance of difference between beta1_sq and beta2_sq)
 #' #0.000162113
 #' 
 #' #output$cov (covariance between t1 and t2)

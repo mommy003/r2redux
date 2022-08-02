@@ -52,7 +52,7 @@ output
 #1.01141  
 }
 \references{
-Olkin, I. and J.D. Finn, Correlations redux. Psychological Bulletin, 1995. 118(1): p. 155.
+Olkin, I. and Finn, J.D. Correlations redux. Psychological Bulletin, 1995. 118(1): p. 155.
 }
 \keyword{context}
 \keyword{correlation}
