@@ -125,8 +125,7 @@ if (length(v1)==1 & length(v2)==1) {
     var1=t100
     R2=s2$r.squared;mv2=1 #expected variance for s1r2
     t100=(1/(nv ) *(1-R2)^2) #Infor matrix
-    lamda=R2/t100 #non-central chi^2 (mu=k+lamda, var=2*(k+2*lamda))
-    t100=t100^2*2*(mv2+2*lamda) #var(beta)^2*var(non-cental chi)
+    
     var2=t100 
     dvr=(s1$r.squared^.5-s2$r.squared^.5)
     #aoa=olkin1_2(omat[ord,ord],nv)
@@ -291,4 +290,3 @@ if (length(v1)==1 & length(v2)==1) {
   }
   
 }
-
