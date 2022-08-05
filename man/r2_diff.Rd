@@ -64,7 +64,7 @@ output
 #output$var_diff (variance of difference between R2_1 and R2_2)
 #5.678517e-07
 
-#output$r2_based_p (two tailed p-value for significant difference between R2_1 and R2_2)
+#output$r2_based_p (two tailed p-value for significant difference)
 #0.5514562
 
 #output$r2_based_p_one_tail(one tailed p-value for significant difference)

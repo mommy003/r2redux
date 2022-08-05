@@ -2,7 +2,7 @@
   #'
   #' This function derives variance of beta1^2 / R^2 
   #' where beta1 and 2 are regression coefficients from a multiple regression model,
-  #' i.e. y = x1*beta1 + x2*beta2 + e, where y, x1 and x2 are column-standardised
+  #' i.e. y = x1 * beta1 + x2 * beta2 + e, where y, x1 and x2 are column-standardised
   #' (see Olkin and Finn 1995).
   #' @references
   #' Olkin, I. and Finn, J.D. Correlations redux. Psychological Bulletin, 1995. 118(1): p. 155.
@@ -11,17 +11,17 @@
   #' @keywords information matrix in the context of correlation
   #' @export
   #' @importFrom stats D cor dnorm lm logLik pchisq qchisq qnorm
-  #' @return  This function will generate the variance of the proportion, i.e. beta1^2/R^2.The outputs are listed as follows.
+  #' @return  This function will generate the variance of the proportion, i.e. beta1_2/R^2.The outputs are listed as follows.
   #' \item{ratio_var}{Variance of ratio}
   #' @examples
   #' #To get information (variance-covariance) matrix of beta1 and beta2 where 
   #' #beta1 and 2 are regression coefficients from a multiple regression model.
-  #' dat=dat1
+  #' dat=dat2
   #' omat=cor(dat)[1:3,1:3]
   #' #omat
-  #' #1.0000000 0.1958636 0.1970060
-  #' #0.1958636 1.0000000 0.9981003
-  #' #0.1970060 0.9981003 1.0000000
+  #' #1.0000000 0.1497007 0.136431
+  #' #0.1497007 1.0000000 0.622790
+  #' #0.1364310 0.6227900 1.000000
   #' 
   #' nv=length(dat$V1)
   #' output=olkin_beta_ratio(omat,nv)
@@ -30,7 +30,7 @@
   #' #r2redux output
   #'
   #' #output$ratio_var (Variance of ratio)
-  #' #27.20206
+  #' #0.08042288
 
   olkin_beta_ratio = function (omat,nv) {
 

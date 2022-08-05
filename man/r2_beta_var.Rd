@@ -16,13 +16,13 @@ r2_beta_var(dat, v1, v2, nv)
 \item{nv}{Sample size}
 }
 \value{
-This function will estiamte the variance of beta1^2 and beta2^2 and, and the covariance between beta1^2 and beta2^2, i.e. the information matrix of squared regression coefficients. beta1 and beta2 are regression coefficients from a multiple regression model, i.e. y = x1\emph{beta1 + x2}beta2 +e, where y, x1 and x2 are column-standardised. The outputs are listed as follows.
+This function will estiamte the variance of beta1^2 and beta2^2, and the covariance between beta1^2 and beta2^2, i.e. the information matrix of squared regression coefficients. beta1 and beta2 are regression coefficients from a multiple regression model, i.e. y = x1 * beta1 + x2 * beta2 +e, where y, x1 and x2 are column-standardised. The outputs are listed as follows.
 \item{beta1_sq}{beta1_sq}
 \item{beta2_sq}{beta2_sq}
 \item{var1}{Variance of beta1_sq}
 \item{var2}{Variance of beta2_sq}
-\item{var1_2}{Variance of difference between t1 and t2}
-\item{cov}{Covariance between t1 and t2}
+\item{var1_2}{Variance of difference between beta1_sq and beta2_sq}
+\item{cov}{Covariance between beta1_sq and beta2_sq}
 \item{upper_beta1_sq}{upper limit of 95\% CI for beta1_sq}
 \item{lower_beta1_sq}{lower limit of 95\% CI for beta1_sq}
 \item{upper_beta2_sq}{upper limit of 95\% CI for beta2_sq}
@@ -31,7 +31,7 @@ This function will estiamte the variance of beta1^2 and beta2^2 and, and the cov
 \description{
 This function estimates var(beta1^2) and (beta2^2), and
 beta1 and 2 are regression coefficients from a multiple regression model,
-i.e. y = x1\emph{beta1 + x2}beta2 +e, y, x1 and x2 are column-standardised
+i.e. y = x1 * beta1 + x2 * beta2 +e, y, x1 and x2 are column-standardised
 (see Olkin and Finn 1995).
 y is N by 1 matrix having the dependent variable,
 x1 is N by 1 matrix having the ith explanatory variable.
@@ -42,7 +42,7 @@ v1 and v2 indicates the ith and jth column in the data
 \examples{
 #To get the 95\% CI of beta1_sq and beta2_sq
 #beta1 and beta2 are regression coefficients from a multiple regression model,
-#i.e. y = x1.beta1 + x2.beta2 +e, where y, x1 and x2 are column-standardised.
+#i.e. y = x1 * beta1 + x2 * beta2 +e, where y, x1 and x2 are column-standardised.
 
 dat=dat2
 nv=length(dat$V1)
@@ -66,7 +66,7 @@ output
 #output$var1_2 (variance of difference between beta1_sq and beta2_sq)
 #0.000162113
 
-#output$cov (covariance between t1 and t2)
+#output$cov (covariance between beta1_sq and beta2_sq)
 #-2.988221e-05
 
 #output$upper_beta1_sq (upper limit of 95\% CI for beta1_sq)
