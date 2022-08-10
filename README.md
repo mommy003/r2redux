@@ -46,7 +46,6 @@ v1=c(1)
 v2=c(2)
 output=r2_diff(dat,v1,v2,nv)
 ```
-
 - r2redux output
 - output$var1 (variance of R_1^2)
 - 0.0001437583
@@ -73,16 +72,18 @@ If we want to perform some enrichment analysis (e.g., regulatory vs non_regulato
 
 To get the test statistic for the ratio which is significantly different from the expectation. var(β ̂_1^2/r_(y,(x_1,x_2))^2), where β ̂_1^2  is the squared regression coefficient of x_1 from a multiple regression model, i.e. y=x_1 β_1+ x_2 β_2+e, and r_(y,(x_1,x_2))^2 is the coefficient of determination of the model. It is noted that y, x_1 and x_2 are column standardised (mean 0 and variance 1).
 
-- dat=read.table("test_ukbb_enrichment_choles") (see example file) or 
-- dat=dat2 (this example embedded within the package)
-- nv=length(dat$V1)
-- v1=c(1)
-- v2=c(2)
-- dat=dat2
-- nv=length(dat$V1)
-- v1=c(1)
-- v2=c(2)
-- output=r2_beta_var(dat,v1,v2,nv)
+```
+dat=read.table("test_ukbb_enrichment_choles") #(see example file) or 
+dat=dat2 #(this example embedded within the package)
+nv=length(dat$V1)
+v1=c(1)
+v2=c(2)
+dat=dat2
+nv=length(dat$V1)
+v1=c(1)
+v2=c(2)
+output=r2_beta_var(dat,v1,v2,nv)
+```
 - r2redux output
 - output$beta1_sq (beta1^2)
 - 0.01118301
@@ -105,12 +106,14 @@ To get the test statistic for the ratio which is significantly different from th
 - output$lower_beta2_sq (lower limit of 95% CI for beta2^2)
 - -0.005127546
 
-- dat=dat2 (this example embedded within the package)
-- nv=length(dat$V1)
-- v1=c(1)
-- v2=c(2)
-- expected_ratio=0.04
-- output=r2_enrich_beta(dat,v1,v2,nv,expected_ratio)
+```
+dat=dat2 #(this example embedded within the package)
+nv=length(dat$V1)
+v1=c(1)
+v2=c(2)
+expected_ratio=0.04
+output=r2_enrich_beta(dat,v1,v2,nv,expected_ratio)
+```
 - r2redux output
 - output$beta1_sq (beta1^2)
 - 0.01118301
