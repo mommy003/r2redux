@@ -78,10 +78,6 @@ dat=dat2 #(this example embedded within the package)
 nv=length(dat$V1)
 v1=c(1)
 v2=c(2)
-dat=dat2
-nv=length(dat$V1)
-v1=c(1)
-v2=c(2)
 output=r2_beta_var(dat,v1,v2,nv)
 ```
 - r2redux output
