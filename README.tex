@@ -1,0 +1,406 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={r2redux},
+  pdfauthor={Moksedul Momin and Hong Lee},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+\title{r2redux}
+\author{Moksedul Momin and Hong Lee}
+\date{10/08/2022}
+
+\begin{document}
+\maketitle
+
+\hypertarget{r2redux}{%
+\section{r2redux}\label{r2redux}}
+
+The `r2redux' package can be used to derive test statistics for R\^{}2
+values from polygenic risk score (PGS) models (variance and covariance
+of R\^{}2 values, p-value and 95\% confidence intervals (CI)). For
+example, it can test if two sets of R\^{}2 values from two different PGS
+models are significantly different to each other whether the two sets of
+PGS are independent or dependent. Because R\^{}2 value is often regarded
+as the predictive ability of PGS, r2redux package can be useful to
+assess the performances of PGS methods or multiple sets of PGS based on
+different information sources. Furthermore, the package can derive the
+information matrix of β ̂\_1\^{}2and β ̂\_2\^{}2 from a multiple
+regression (see olkin\_beta1\_2 or olkin\_beta\_info function in the
+manual), which is a basis of a novel PGS-based genomic partitioning
+method (see r2\_enrich or r2\_enrich\_beta function in the manual). It
+is recommended that the target sample size in the PGS study should be
+more than 2,000 for quantitative traits and more than 5,000 for binary
+responses or case-control studies. The P-value generated from the
+r2redux package provides two types of p-values (for one- and two-tailed
+test) unless the comparison is for nested models (e.g.~y=PGS\_1+PGS\_2+e
+vs.~y=PGS\_2+e) where the R\^{}2 of the full model is expected to be
+always higher than the reduced model. When there are multiple covariates
+(e.g.~age, sex and other demographic variables), the phenotypes can be
+adjusted for the covariates, and pre-adjusted phenotypes (residuals)
+should be used in the r2redux.
+
+\hypertarget{installation}{%
+\section{INSTALLATION}\label{installation}}
+
+To use r2redux:
+
+\begin{verbatim}
+install.packages("r2redux") 
+library(r2redux)
+\end{verbatim}
+
+or
+
+\begin{verbatim}
+install.packages("devtools")
+library(devtools)
+devtools::install_github("mommy003/r2redux")
+library(r2redux)
+\end{verbatim}
+
+\hypertarget{quick-start}{%
+\section{QUICK START}\label{quick-start}}
+
+We illustrate the usage of r2redux using multiple sets of PGS estimated
+based on GWAS summary statistics from UK Biobank or Biobank Japan
+(reference datasets). In a target dataset, the phenotypes of target
+samples (y) can be predicted with PGS (a PGS model, e.g.~y=PRS+e, where
+y and PGS are column-standardised 1. Note that the target individuals
+should be independent from reference individuals. We can test the
+significant differences of the predictive ability (R\^{}2) between a
+pair of PGS (see r2\_diff function and example in the manual).
+
+\hypertarget{data-preparation}{%
+\section{DATA PREPARATION}\label{data-preparation}}
+
+\textbf{a. Statistical testing of significant difference between R2
+values for p-value thresholds:} r2redux requires only phenotype and
+estimated PGS (from PLINK or any other software). Note that any missing
+value in the phenotypes and PGS tested in the model should be removed.
+If we want to test the significant difference of R\^{}2 values for
+p-value thresholds, r2\_diff function can be used with an input file
+that includes the following fields (also see
+test\_ukbb\_thresholds\_scaled in the example directory form github
+(\url{https://github.com/mommy003/r2redux}) or read dat1 file embedded
+within the package and r2\_diff function in the manual).
+
+\begin{itemize}
+\tightlist
+\item
+  Phenotype (y)
+\item
+  PGS for p value 1 (x1)
+\item
+  PGS for p value 0.5 (x2)
+\item
+  PGS for p value 0.4 (x3)
+\item
+  PGS for p value 0.3 (x4)
+\item
+  PGS for p value 0.2 (x5)
+\item
+  PGS for p value 0.1 (x6)
+\item
+  PGS for p value 0.05 (x7)
+\item
+  PGS for p value 0.01 (x8)
+\item
+  PGS for p value 0.001 (x9)
+\item
+  PGS for p value 0.0001 (x10)
+\end{itemize}
+
+To get the test statistics for the difference between R2(y=x{[},v1{]})
+and R2(yx{[},v2{]}). (here we define R\_1\^{}2= R\^{}2(y=x{[},v1{]}))
+and R\_2\textsuperscript{2=R}2(y=x{[},v2{]})))
+
+\begin{verbatim}
+dat=read.table("test_ukbb_thresholds_scaled") #(see example files) or
+dat=dat1 #(this example embedded within the package)
+nv=length(dat$V1)
+v1=c(1)
+v2=c(2)
+output=r2_diff(dat,v1,v2,nv)
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  r2redux output
+\item
+  output\$var1 (variance of R\_1\^{}2)
+\item
+  0.0001437583
+\item
+  output\$var2 (variance of R\_2\^{}2)
+\item
+  0.0001452828
+\item
+  output\$var\_diff (variance of difference between R\_1\^{}2and
+  R\_2\^{}2)
+\item
+  5.678517e-07
+\item
+  output\$r2\_based\_p (p-value for significant difference between
+  R\_1\^{}2 and R\_2\^{}2)
+\item
+  0.5514562
+\item
+  output\$mean\_diff (differences between R\_1\^{}2 and R\_2\^{}2)
+\item
+  -0.0004488044
+\item
+  output\$upper\_diff (upper limit of 95\% CI for the difference)
+\item
+  0.001028172
+\item
+  output\$lower\_diff (lower limit of 95\% CI for the difference)
+\item
+  -0.001925781
+\end{itemize}
+
+\textbf{b. PGS-based genomic enrichment analysis:} If we want to perform
+some enrichment analysis (e.g., regulatory vs non\_regulatory) in the
+PGS context to test significantly different from the expectation
+(p\_exp= \# SNPs in the regulatory / total \# SNPs = 4\%). We
+simultaneously fit two sets of PGS from regulatory and non-regulatory to
+get β ̂\_regu\^{}2 and β ̂\_(non-regu)\^{}2, using a multiple regression,
+and assess if the ratio, (β ̂\_1\^{}2)/(r\_(y,〖(x〗\_1,x\_2))\^{}2 ) are
+significantly different from the expectation, p\_exp. To test this, we
+need to prepare input file for r2redux that includes the following
+fields (e.g.~test\_ukbb\_enrichment\_choles in example directory or read
+dat2 file embedded within the package and r2\_enrich\_beta function in
+the manual).
+
+\begin{itemize}
+\tightlist
+\item
+  Phenotype (y)
+\item
+  PGS for regulatory region (x1)
+\item
+  PGS for non-regulatory region (x2)
+\end{itemize}
+
+To get the test statistic for the ratio which is significantly different
+from the expectation. var(β ̂\_1\textsuperscript{2/r\_(y,(x\_1,x\_2))}2),
+where β ̂\_1\^{}2 is the squared regression coefficient of x\_1 from a
+multiple regression model, i.e.~y=x\_1 β\_1+ x\_2 β\_2+e, and
+r\_(y,(x\_1,x\_2))\^{}2 is the coefficient of determination of the
+model. It is noted that y, x\_1 and x\_2 are column standardised (mean 0
+and variance 1).
+
+\begin{verbatim}
+dat=read.table("test_ukbb_enrichment_choles") #(see example file) or 
+dat=dat2 #(this example embedded within the package)
+nv=length(dat$V1)
+v1=c(1)
+v2=c(2)
+dat=dat2
+nv=length(dat$V1)
+v1=c(1)
+v2=c(2)
+output=r2_beta_var(dat,v1,v2,nv)
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  r2redux output
+\item
+  output\$beta1\_sq (beta1\^{}2)
+\item
+  0.01118301
+\item
+  output\$beta2\_sq (beta2\^{}2)
+\item
+  0.004980285
+\item
+  output\$var1 (variance of beta1\^{}2)
+\item
+  7.072931e-05
+\item
+  output\$var2 (variance of beta2\^{}2)
+\item
+  3.161929e-05
+\item
+  output\$var1\_2 (variance of difference between beta1\^{}2 and
+  beta2\^{}2)
+\item
+  0.000162113
+\item
+  output\$cov (covariance between beta1\^{}2 and beta2\^{}2)
+\item
+  -2.988221e-05
+\item
+  output\$upper\_beta1\_sq (upper limit of 95\% CI for beta1\^{}2)
+\item
+  0.03037793
+\item
+  output\$lower\_beta1\_sq (lower limit of 95\% CI for beta1\^{}2)
+\item
+  -0.00123582
+\item
+  output\$upper\_beta2\_sq (upper limit of 95\% CI for beta2\^{}2)
+\item
+  0.02490076
+\item
+  output\$lower\_beta2\_sq (lower limit of 95\% CI for beta2\^{}2)
+\item
+  -0.005127546
+\end{itemize}
+
+\begin{verbatim}
+dat=dat2 #(this example embedded within the package)
+nv=length(dat$V1)
+v1=c(1)
+v2=c(2)
+expected_ratio=0.04
+output=r2_enrich_beta(dat,v1,v2,nv,expected_ratio)
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  r2redux output
+\item
+  output\$beta1\_sq (beta1\^{}2)
+\item
+  0.01118301
+\item
+  output\$beta2\_sq (beta2\^{}2)
+\item
+  0.004980285
+\item
+  output\$ratio1 (beta1\textsuperscript{2/R}2)
+\item
+  0.4392572
+\item
+  output\$ratio2 (beta2\textsuperscript{2/R}2)
+\item
+  0.1956205
+\item
+  output\$ratio\_var1 (variance of ratio 1)
+\item
+  0.08042288
+\item
+  output\$ratio\_var2 (variance of ratio 2)
+\item
+  0.0431134
+\item
+  output\$upper\_ratio1 (upper limit of 95\% CI for ratio 1)
+\item
+  0.9950922
+\item
+  output\$lower\_ratio1 (lower limit of 95\% CI for ratio 1)
+\item
+  -0.1165778
+\item
+  output\$upper\_ratio2 upper limit of 95\% CI for ratio 2)
+\item
+  0.6025904
+\item
+  output\$lower\_ratio2 (lower limit of 95\% CI for ratio 2)
+\item
+  -0.2113493
+\item
+  output\$enrich\_p1 (two tailed P-value for beta1\textsuperscript{2/R}2
+  is significantly different from exp1)
+\item
+  0.1591692
+\item
+  output\$enrich\_p1\_one\_tail (one tailed P-value for
+  beta1\textsuperscript{2/R}2 is significantly different from exp1)
+\item
+  0.07958459
+\item
+  output\$enrich\_p2 (P-value for beta2\^{}2/R2 is significantly
+  different from (1-exp1))
+\item
+  0.000232035
+\item
+  output\$enrich\_p2\_one\_tail (one tailed P-value for beta2\^{}2/R2 is
+  significantly different from (1-exp1))
+\item
+  0.0001160175
+\end{itemize}
+
+\hypertarget{references}{%
+\section{References}\label{references}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Olkin, I. and Finn, J.D. Correlations redux. Psychological Bulletin,
+  1995. 118(1): p.~155.
+\item
+  Momin, M.M., Lee, S., Wray, N.R. and Lee S.h. 2022. Significance tests
+  for R2 of out-of-sample prediction using polygenic scores. bioRxiv.
+\end{enumerate}
+
+\hypertarget{contact-information}{%
+\section{Contact information}\label{contact-information}}
+
+Please contact Hong Lee
+(\href{mailto:hong.lee@unisa.edu.au}{\nolinkurl{hong.lee@unisa.edu.au}})
+or Moksedul Momin
+(\href{mailto:cvasu.momin@gmail.com}{\nolinkurl{cvasu.momin@gmail.com}})
+if you have any queries.
+
+\end{document}
