@@ -8,12 +8,12 @@ To use r2redux:
 install.packages("r2redux") 
 library(r2redux)
 ```
-- or
+ or
 ```
--	install.packages("devtools")
--	library(devtools)
--	devtools::install_github("mommy003/r2redux")
--	library(r2redux)
+install.packages("devtools")
+library(devtools)
+devtools::install_github("mommy003/r2redux")
+library(r2redux)
 ```
 
 
