@@ -1,6 +1,6 @@
 Package: r2redux
 Title: R2 Statistic
-Version: 1.0.10
+Version: 1.0.11
 Authors@R: c(person("Hong", "Lee", role = c("aut","cph"),email = "Hong.Lee@unisa.edu.au"),
              person("Moksedul", "Momin", role = c("aut", "cre","cph"), email = "cvasu.momin@gmail.com"))
 Description: R2 statistic for significance test. Variance and covariance of R2 values used to assess the 95% CI and p-value of the R2 difference.
@@ -12,3 +12,6 @@ NeedsCompilation: no
 Depends: 
     R (>= 2.10)
 LazyData: true
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
