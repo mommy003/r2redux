@@ -48,9 +48,9 @@ output=r2_diff(dat,v1,v2,nv)
 ```
 - r2redux output
 - output$var1 (variance of R_1^2)
-- 0.0001437583
+- 0.0001436128
 - output$var2 (variance of R_2^2)
-- 0.0001452828
+- 0.0001451358
 - output$var_diff (variance of difference between R_1^2and R_2^2)
 - 5.678517e-07
 - output$r2_based_p (p-value for significant difference between R_1^2  and R_2^2)
