@@ -32,7 +32,7 @@ v1 indicates the ith column in the x matrix
 }
 \examples{
 
-#To get the test statistics for R2(y~x[,v1])
+#To get the test statistics for R2(y~x[,1])
 dat=dat1
 nv=length(dat$V1)
 v1=c(1)
@@ -57,7 +57,7 @@ output
 #0.01764252
 
 
-#To get the test statistic for R2(y~x[,v1]+x[,v2]+x[,v3])
+#To get the test statistic for R2(y~x[,1]+x[,2]+x[,3])
 
 dat=dat1
 nv=length(dat$V1)
@@ -79,7 +79,33 @@ r2_var(dat,v1,nv)
 #0.06433782
 
 #output$lower_r2 (lower limit of 95\% CI for R2)
-#0.01764252
+#0.0176425
+
+
+#When comparing two independent sets of PGSs 
+#Let’s assume dat1$V1 and dat2$V2 are independent for this example
+#(e.g. male PGS vs. female PGS)
+
+nv=length(dat1$V1)
+v1=c(1)
+output1=r2_var(dat1,v1,nv)
+nv=length(dat2$V1)
+v1=c(1)
+output2=r2_var(dat2,v1,nv)
+
+#To get the difference between two independent sets of PGSs 
+r2_diff_independent=abs(output1$rsq-output2$rsq)
+
+#To get the variance of the difference between two independent sets of PGSs 
+var_r2_diff_independent= output1$var+output2$var
+sd_r2_diff_independent=sqrt(var_r2_diff_independent)
+
+#To get p-value (following eq. 15 in the paper)
+chi=r2_diff_independent^2/var_r2_diff_independent
+p_value=pchisq(chi,1,lower.tail=FALSE)
+#to get 95\% CI (following eq. 15 in the paper)
+uci=r2_diff_independent+1.96*sd_r2_diff_independent
+lci=r2_diff_independent-1.96*sd_r2_diff_independent
 }
 \keyword{R2}
 \keyword{information}

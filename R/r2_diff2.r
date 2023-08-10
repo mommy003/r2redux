@@ -26,8 +26,8 @@
   #' \item{upper_diff}{Upper limit of 95% CI for the difference}
   #' \item{lower_diff}{Lower limit of 95% CI for the difference}
   #' @examples
-  #' #To get the test statistics for the difference between R2(y~x[,v1]) and 
-  #' #R2(y~x[,v2]). (here we define R2_1=R2(y~x[,v1])) and R2_2=R2(y~x[,v2])))
+  #' #To get the test statistics for the difference between R2(y~x[,1]) and 
+  #' #R2(y~x[,2]). (here we define R2_1=R2(y~x[,1])) and R2_2=R2(y~x[,2])))
   #' 
   #' dat=dat1
   #' nv=length(dat$V1)
@@ -69,8 +69,8 @@
   #' #-0.001925781
   #'
   #'
-  #' #To get the test statistics for the difference between R2(y~x[,v1]+x[,v2]) and 
-  #' #R2(y~x[,v2]). (here R2_1=R2(y~x[,v1]+x[,v2]) and R2_2=R2(y~x[,v1]))
+  #' #To get the test statistics for the difference between R2(y~x[,1]+x[,2]) and 
+  #' #R2(y~x[,2]). (here R2_1=R2(y~x[,1]+x[,2]) and R2_2=R2(y~x[,1]))
   #' 
   #' dat=dat1
   #' nv=length(dat$V1)
@@ -106,9 +106,49 @@
   #' 
   #' #output$lower_diff (lower limit of 95% CI for the difference)
   #' #-0.0005576171
+  #'
+#' 
+#' ##When faced with multiple predictors, exceeding two in number, 
+#' #as seen in the scenario: 
+#' #y = PRS vs. y = PRS+any_cov1+any_cov2+...+any_covN 
+#' #A more streamlined approach can be adopted by consolidating the various 
+#' #predictors (any_cov1, any_cov2, ..., any_covN) into a single predictor, 
+#' #following this procedure in R: 
+#' 
+#' #R 
+#' #mod <- lm(y ~PRS + any_cov1 + any_cov2 + ... + any_covN) 
+#' #merged_predictor <- cbind(any_cov1, any_cov2, ... , any_covN) 
+#' #%*% mod$coefficients[3:(2+N)] 
+#' 
+#' #Subsequently, the comparison can be equivalently expressed as: 
+#' #y = PRS vs. y = PRS + merged_predictor 
+#' #This comparison can be simply achieved using the r2_diff function, 
+#' #as exemplified in the second example above. 
+#' 
+#' 
+#' ##In another scenario: 
+#' #y = any_cov1 + any_cov2 + ... + any_covN  vs. 
+#' #y = PRS + any_cov1 + any_cov2 +...+ any_covN 
+#' 
+#' #The same approach applies as 
+#' #R 
+#' #mod <- lm(y ~PRS + any_cov1 + any_cov2 + ... + any_covN) 
+#' #merged_predictor <- cbind(any_cov1, any_cov2, ... , any_covN) 
+#' #%*% mod$coefficients[3:(2+N)] 
+#' 
+#' #the comparison can be equivalently expressed as: 
+#' #y = merged_predictor  vs. y = PRS + merged_predictor 
+#' 
+#' 
+#' ##For this scenario, alternatively, the outcome variable (y) can be preadjusted 
+#' #with covariate(s), following the procedure in R:
+#' 
+#' #R 
+#' #mod <- lm(y ~ any_cov1 + any_cov2 + ... + any_covN) 
+#' #y_adj=scale(mod$residuals)
+#' #then, the comparative significance test can be approximated by using 
+#' #the following model y_adj = PRS  
 
- 
-  
    
  
   

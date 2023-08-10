@@ -27,8 +27,8 @@
 #' \item{upper_diff}{Upper limit of 95% CI for the difference}
 #' \item{lower_diff}{Lower limit of 95% CI for the difference}
 #' @examples
-#' #To get the test statistics for the difference between R(y~x[,v1]) and 
-#' #R(y~x[,v2]). (here we define R_1=R(y~x[,v1])) and R_2=R(y~x[,v2])))
+#' #To get the test statistics for the difference between R(y~x[,1]) and 
+#' #R(y~x[,2]). (here we define R_1=R(y~x[,1])) and R_2=R(y~x[,2])))
 #' 
 #' dat=dat1
 #' nv=length(dat$V1)
@@ -57,7 +57,8 @@
 #' #output$r_based_p (two tailed p-value for significant difference between R_1 and R_2)
 #' #0.5500319
 #' 
-#' #output$r_based_p_one_tail (one tailed p-value for significant difference between R_1 and R_2)
+#' #output$r_based_p_one_tail (one tailed p-value 
+#" for significant difference between R_1 and R_2)
 #' #0.2750159
 #' 
 #' #output$mean_diff
@@ -70,8 +71,8 @@
 #' #-0.004888417
 #' 
 #' 
-#' #To get the test statistics for the difference between R(y~x[,v1]+[,v2]) and 
-#' #R(y~x[,v2]). (here R_1=R(y~x[,v1]+x[,v2]) and R_2=R(y~x[,v1]))
+#' #To get the test statistics for the difference between R(y~x[,1]+[,2]) and 
+#' #R(y~x[,2]). (here R_1=R(y~x[,1]+x[,2]) and R_2=R(y~x[,1]))
 #' 
 #' nv=length(dat$V1)
 #' v1=c(1,2)

@@ -37,8 +37,8 @@ v1 or v2 indicates the ith column in the x matrix
 (v1 or v2 can be multiple values between 1 - M, see Arguments below)
 }
 \examples{
-#To get the test statistics for the difference between R(y~x[,v1]) and 
-#R(y~x[,v2]). (here we define R_1=R(y~x[,v1])) and R_2=R(y~x[,v2])))
+#To get the test statistics for the difference between R(y~x[,1]) and 
+#R(y~x[,2]). (here we define R_1=R(y~x[,1])) and R_2=R(y~x[,2])))
 
 dat=dat1
 nv=length(dat$V1)
@@ -67,7 +67,7 @@ output
 #output$r_based_p (two tailed p-value for significant difference between R_1 and R_2)
 #0.5500319
 
-#output$r_based_p_one_tail (one tailed p-value for significant difference between R_1 and R_2)
+#output$r_based_p_one_tail (one tailed p-value 
 #0.2750159
 
 #output$mean_diff
@@ -80,8 +80,8 @@ output
 #-0.004888417
 
 
-#To get the test statistics for the difference between R(y~x[,v1]+[,v2]) and 
-#R(y~x[,v2]). (here R_1=R(y~x[,v1]+x[,v2]) and R_2=R(y~x[,v1]))
+#To get the test statistics for the difference between R(y~x[,1]+[,2]) and 
+#R(y~x[,2]). (here R_1=R(y~x[,1]+x[,2]) and R_2=R(y~x[,1]))
 
 nv=length(dat$V1)
 v1=c(1,2)
