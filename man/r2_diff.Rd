@@ -118,47 +118,31 @@ output=r2_diff(dat,v1,v2,nv)
 #output$lower_diff (lower limit of 95\% CI for the difference)
 #-0.0005576171
 
+##When faced with multiple predictors, exceeding two in number,
+#as seen in the scenario:
+#y = any_cov1 + any_cov2 + ... + any_covN  vs.
+#y = PRS + any_cov1 + any_cov2 +...+ any_covN
+#A more streamlined approach can be adopted by consolidating the various
+#predictors (any_cov1, any_cov2, ..., any_covN) into a single predictor,
+#following this procedure in R:
 
-##When faced with multiple predictors, exceeding two in number, 
-#as seen in the scenario: 
-#y = PRS vs. y = PRS+any_cov1+any_cov2+...+any_covN 
-#A more streamlined approach can be adopted by consolidating the various 
-#predictors (any_cov1, any_cov2, ..., any_covN) into a single predictor, 
-#following this procedure in R: 
-
-#R 
-#mod <- lm(y ~PRS + any_cov1 + any_cov2 + ... + any_covN) 
-#merged_predictor <- cbind(any_cov1, any_cov2, ... , any_covN) 
-#\%*\% mod$coefficients[3:(2+N)] 
-
-#Subsequently, the comparison can be equivalently expressed as: 
-#y = PRS vs. y = PRS + merged_predictor 
-#This comparison can be simply achieved using the r2_diff function, 
-#as exemplified in the second example above. 
-
-
-##In another scenario: 
-#y = any_cov1 + any_cov2 + ... + any_covN  vs. 
-#y = PRS + any_cov1 + any_cov2 +...+ any_covN 
-
-#The same approach applies as 
-#R 
-#mod <- lm(y ~PRS + any_cov1 + any_cov2 + ... + any_covN) 
-#merged_predictor <- cbind(any_cov1, any_cov2, ... , any_covN) 
-#\%*\% mod$coefficients[3:(2+N)] 
-
-#the comparison can be equivalently expressed as: 
-#y = merged_predictor  vs. y = PRS + merged_predictor 
-
-
-##For this scenario, alternatively, the outcome variable (y) can be preadjusted 
+#R
+#mod <- lm(y ~PRS + any_cov1 + any_cov2 + ... + any_covN)
+#merged_predictor <- cbind(any_cov1, any_cov2, ... , any_covN)
+#\%*\% mod$coefficients[3:(2+N)]
+#the comparison can be equivalently expressed as:
+#y = merged_predictor  vs. y = PRS + merged_predictor
+#This comparison can be simply achieved using the r2_diff function,
+#as exemplified in the second example above, e.g. r2_diff(dat, v1, v2, nv).
+  
+##For this scenario, alternatively, the outcome variable (y) can be preadjusted
 #with covariate(s), following the procedure in R:
 
-#R 
-#mod <- lm(y ~ any_cov1 + any_cov2 + ... + any_covN) 
+#R
+#mod <- lm(y ~ any_cov1 + any_cov2 + ... + any_covN)
 #y_adj=scale(mod$residuals)
-#then, the comparative significance test can be approximated by using 
-#the following model y_adj = PRS  
+#then, the comparative significance test can be approximated by using
+#the following model y_adj = PRS (r2_var(dat, v1, nv)) 
 }
 \keyword{R2}
 \keyword{information}
