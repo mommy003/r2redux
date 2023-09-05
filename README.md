@@ -62,12 +62,11 @@ output=r2_diff(dat,v1,v2,nv)
 - output$lower_diff (lower limit of 95% CI for the difference)
 - -0.001925781
 
-**To compare the following scenarios, please see r2_diff section in the manual (page no 14-17)**
-- y = any_cov1+any_cov2+...+any_covN+e vs. y = PRS+any_cov1+any_cov2+...+any_covN+e
-- y_adj=1 vs y_adj=PRS
+**When faced with multiple predictors common between two models (see a few scenarios below), please see r2_diff section in the manual (page no 14-17)**
+- y = PRS+any_cov1+any_cov2+...+any_covN+e vs. y = any_cov1+any_cov2+...+any_covN+e
 
 - y = PRS1+any_cov1+any_cov2+...+any_covN+e vs. y = PRS2+any_cov1+any_cov2+...+any_covN+e
-- y_adj = PRS1 + e vs. y_adj = PRS2 + e
+  
 
  
 **b. PGS-based genomic enrichment analysis:**
