@@ -63,10 +63,9 @@ output=r2_diff(dat,v1,v2,nv)
 - -0.001925781
 
 To compare the following scenarios, please see r_diff section in the manual
-***Nested Model comparison
 - y = any_cov1+any_cov2+...+any_covN+e vs. y = PRS+any_cov1+any_cov2+...+any_covN+e
 - y_adj=1 vs y_adj=PRS
-***Non-Nested Model comparison
+-
 - y = PRS1+any_cov1+any_cov2+...+any_covN+e vs. y = PRS2+any_cov1+any_cov2+...+any_covN+e
 - y_adj = PRS1 + e vs. y_adj = PRS2 + e
 
