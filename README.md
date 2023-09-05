@@ -62,7 +62,7 @@ output=r2_diff(dat,v1,v2,nv)
 - output$lower_diff (lower limit of 95% CI for the difference)
 - -0.001925781
 
-**To compare the following scenarios, please see r_diff section in the manual
+** To compare the following scenarios, please see r_diff section in the manual
 - y = any_cov1+any_cov2+...+any_covN+e vs. y = PRS+any_cov1+any_cov2+...+any_covN+e
 - y_adj=1 vs y_adj=PRS
 
