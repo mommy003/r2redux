@@ -62,6 +62,14 @@ output=r2_diff(dat,v1,v2,nv)
 - output$lower_diff (lower limit of 95% CI for the difference)
 - -0.001925781
 
+To compare the following scenarios, please see r_diff section in the manual
+***Nested Model comparison
+- y = any_cov1+any_cov2+...+any_covN+e vs. y = PRS+any_cov1+any_cov2+...+any_covN+e
+- y_adj=1 vs y_adj=PRS
+***Non-Nested Model comparison
+- y = PRS1+any_cov1+any_cov2+...+any_covN+e vs. y = PRS2+any_cov1+any_cov2+...+any_covN+e
+- y_adj = PRS1 + e vs. y_adj = PRS2 + e
+
  
 **b. PGS-based genomic enrichment analysis:**
 If we want to perform some enrichment analysis (e.g., regulatory vs non_regulatory) in the PGS context to test significantly different from the expectation (p_exp= # SNPs in the regulatory / total # SNPs = 4%). We simultaneously fit two sets of PGS from regulatory and non-regulatory to get β ̂_regu^2 and β ̂_(non-regu)^2, using a multiple regression, and assess if the ratio,  (β ̂_1^2)/(r_(y,〖(x〗_1,x_2))^2 ) are significantly different from the expectation, p_exp. To test this, we need to prepare input file for r2redux that includes the following fields (e.g. test_ukbb_enrichment_choles in example directory or read dat2 file embedded within the package and r2_enrich_beta function in the manual).
