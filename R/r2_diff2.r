@@ -387,7 +387,7 @@ z=list(rsq1=s1$r.squared,rsq2=s2$r.squared,var1=var1,var2=var2,var_diff=as.numer
     lci=(lci-lamda-mv)/(2*(mv+2*lamda))^.5
     lci=lci*aoa^.5+dvr2
     
-    z=list(rsq1=s1$r.squared,rsq2=s2$r.squared,var1=var1,var=var2,var_diff=as.numeric(aoa),LRT_p=as.numeric(p1),r_based_p=as.numeric(p2),r_based_p_one_tail=as.numeric(p2/2),mean_diff=dvr2,upper_diff=as.numeric(uci),lower_diff=as.numeric(lci))
+    z=list(rsq1=s1$r.squared,rsq2=s2$r.squared,var1=var1,var=var2,var_diff=as.numeric(aoa),LRT_p=as.numeric(p1),r2_based_p=as.numeric(p2),r2_based_p_one_tail=as.numeric(p2/2),mean_diff=dvr2,upper_diff=as.numeric(uci),lower_diff=as.numeric(lci))
     #NOTE: r2_based_p=p2 due to chi^2 distribution
     return(z)
     
