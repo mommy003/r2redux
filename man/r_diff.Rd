@@ -121,7 +121,7 @@ output
 #is positive (R_1) and another is negative (R_2), or vice versa, it is 
 #crucial to approach the interpretation of the comparative test with caution. 
 #This caution is especially emphasized when applying r_diff() 
-#in a nested model comparison 
+#in a nested model comparison involving a joint model
 }
 \keyword{R2}
 \keyword{information}

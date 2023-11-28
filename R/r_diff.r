@@ -112,7 +112,7 @@
 #' #is positive (R_1) and another is negative (R_2), or vice versa, it is 
 #' #crucial to approach the interpretation of the comparative test with caution. 
 #' #This caution is especially emphasized when applying r_diff() 
-#' #in a nested model comparison 
+#' #in a nested model comparison involving a joint model
 
 
 
@@ -135,7 +135,8 @@ if (length(v1)==1 & length(v2)==1) {
     t100=(1/(nv ) *(1-R2)^2) #Infor matrix
     
     var2=t100 
-    dvr=(s1$r.squared^.5-s2$r.squared^.5)
+    #dvr=(s1$r.squared^.5-s2$r.squared^.5)
+    dvr=(s1$coefficients[2,1]-s2$coefficients[2,1])
     #aoa=olkin1_2(omat[ord,ord],nv)
     r_aoa=r_olkin1_2(omat[ord,ord],nv)
     #chi_dum=dvr2^2/aoa
