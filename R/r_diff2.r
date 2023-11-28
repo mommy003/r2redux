@@ -1,5 +1,5 @@
 
-#' r_diff function
+#' r_diff2 function
 #'
 #' This function estimates var(R(y~x\[,v1]) - R(y~x\[,v2]))
 #' where R is the correlation between y and x,
@@ -106,17 +106,10 @@
 #'
 #' #output$lower_diff
 #' #-0.003445429
-#' 
-#' 
-#' #Note: If the directions are not consistent, for instance, if one correlation
-#' #is positive (R_1) and another is negative (R_2), or vice versa, it is 
-#' #crucial to approach the interpretation of the comparative test with caution. 
-#' #This caution is especially emphasized when applying r_diff() 
-#' #in a nested model comparison 
 
 
 
-r_diff = function (dat,v1,v2,nv) {
+r_diff2 = function (dat,v1,v2,nv) {
   
   
   dat=scale(dat);omat=cor(dat)
@@ -135,7 +128,8 @@ if (length(v1)==1 & length(v2)==1) {
     t100=(1/(nv ) *(1-R2)^2) #Infor matrix
     
     var2=t100 
-    dvr=(s1$r.squared^.5-s2$r.squared^.5)
+    dvr=(s1$coefficients[2,1]-s2$coefficients[2,1])
+    #dvr=ifelse(((s1$coefficients[2,1]>0 & s2$coefficients[2,1]>0)|(s1$coefficients[2,1]<0 & s2$coefficients[2,1]<0)), dvr, abs(s1$coefficients[2,1])+abs(s2$coefficients[2,1]))
     #aoa=olkin1_2(omat[ord,ord],nv)
     r_aoa=r_olkin1_2(omat[ord,ord],nv)
     #chi_dum=dvr2^2/aoa
@@ -174,7 +168,8 @@ if (length(v1)==1 & length(v2)==1) {
     var2=t100 
     LR=-2*(logLik(m2)-logLik(m1))
     p1=pchisq(LR,1,lower.tail=F)
-    dvr=(s1$r.squared^.5-s2$r.squared^.5)
+    dvr=(s1$coefficients[2,1]-s2$coefficients[2,1])
+    #dvr=ifelse(((s1$coefficients[2,1]>0 & s2$coefficients[2,1]>0)|(s1$coefficients[2,1]<0 & s2$coefficients[2,1]<0)), dvr, abs(s1$coefficients[2,1])+abs(s2$coefficients[2,1]))
     
     #chi_dum=dvr2/(1/(nv )*(1-dvr2)^2) #NCP
     #p2=pchisq(chi_dum,1,lower.tail=F)
@@ -213,7 +208,8 @@ if (length(v1)==1 & length(v2)==1) {
     var2=t100 
     
     
-    dvr=(s1$r.squared^.5-s2$r.squared^.5)
+    dvr=(s1$coefficients[2,1]-s2$coefficients[2,1])
+    #dvr=ifelse(((s1$coefficients[2,1]>0 & s2$coefficients[2,1]>0)|(s1$coefficients[2,1]<0 & s2$coefficients[2,1]<0)), dvr, abs(s1$coefficients[2,1])+abs(s2$coefficients[2,1]))
     r_aoa=r_olkin12_3(omat[ord,ord],nv) #check
     r_chi_dum=dvr^2/r_aoa
     r_p3=pchisq(r_chi_dum,1,lower.tail=F)
@@ -248,7 +244,9 @@ if (length(v1)==1 & length(v2)==1) {
     R2=s2$r.squared;mv2=2 #expected variance for s1r2
     t100=(1/(nv) *(1-R2)^2) #Infor matrix
     var2=t100 
-    dvr=(s1$r.squared^.5-s2$r.squared^.5)
+    dvr=(s1$coefficients[2,1]-s2$coefficients[2,1])
+    #dvr=ifelse(((s1$coefficients[2,1]>0 & s2$coefficients[2,1]>0)|(s1$coefficients[2,1]<0 & s2$coefficients[2,1]<0)), dvr, abs(s1$coefficients[2,1])+abs(s2$coefficients[2,1]))
+
     r_aoa=r_olkin12_13(omat[ord,ord],nv)
     r_chi_dum=dvr^2/r_aoa
     r_p3=pchisq(r_chi_dum,1,lower.tail=F)
@@ -280,7 +278,9 @@ if (length(v1)==1 & length(v2)==1) {
     R2=s2$r.squared;mv2=2 #expected variance for s1r2
     t100=(1/(nv) *(1-R2)^2) #Infor matrix
     var2=t100 
-    dvr=(s1$r.squared^.5-s2$r.squared^.5)
+    dvr=(s1$coefficients[2,1]-s2$coefficients[2,1])
+    #dvr=ifelse(((s1$coefficients[2,1]>0 & s2$coefficients[2,1]>0)|(s1$coefficients[2,1]<0 & s2$coefficients[2,1]<0)), dvr, abs(s1$coefficients[2,1])+abs(s2$coefficients[2,1]))
+    
     r_aoa=r_olkin12_34(omat[ord,ord],nv)
     r_chi_dum=dvr^2/r_aoa
     r_p3=pchisq(r_chi_dum,1,lower.tail=F)
