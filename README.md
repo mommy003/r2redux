@@ -61,6 +61,7 @@ output=r2_diff(dat,v1,v2,nv)
 - 0.001028172
 - output$lower_diff (lower limit of 95% CI for the difference)
 - -0.001925781
+-
 $\color{black}{Note:}$ If the directions are not consistent, for instance, if one correlation is positive (R_1) and another is negative (R_2), or vice versa, it is crucial to approach the interpretation of the comparative test with caution. It's important to note that R^2 alone does not provide information about the direction or sign of the relationships between predictors and the response variable. 
 
 **When faced with multiple predictors common between two models (see a few scenarios below), please see r2_diff section in the manual (page no 14-17)**
