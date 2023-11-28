@@ -62,11 +62,11 @@ output=r2_diff(dat,v1,v2,nv)
 - output$lower_diff (lower limit of 95% CI for the difference)
 - -0.001925781
 - output$p$nested
-- -1
+- 1
 - output$p$nonnested
-- -0.5514562
+- 0.5514562
 - output$p$LRT
-- -1
+- 1
 
 #### $\color{black}{Note:}$ If the directions are not consistent, for instance, if one correlation is positive (R_1) and another is negative (R_2), or vice versa, it is crucial to approach the interpretation of the comparative test with caution. It's important to note that R^2 alone does not provide information about the direction or sign of the relationships between predictors and the response variable. 
 
