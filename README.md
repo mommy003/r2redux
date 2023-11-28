@@ -67,6 +67,7 @@ output=r2_diff(dat,v1,v2,nv)
 
 - y = PRS1+any_cov1+any_cov2+...+any_covN+e vs. y = PRS2+any_cov1+any_cov2+...+any_covN+e
   
+$\color{black}{Note:}$ If the directions are not consistent, for instance, if one correlation is positive (R_1) and another is negative (R_2), or vice versa, it is crucial to approach the interpretation of the comparative test with caution. It's important to note that R^2 alone does not provide information about the direction or sign of the relationships between predictors and the response variable. 
 
  
 **b. PGS-based genomic enrichment analysis:**
