@@ -148,7 +148,7 @@ if (length(v1)==1 & length(v2)==1) {
     #lci=dvr2-1.96*aoa^.5
     r_uci=dvr+1.96*r_aoa^.5
     r_lci=dvr-1.96*r_aoa^.5
-    z=list(r1=s1$r.squared^.5,r2=s2$r.squared^.5,var1=var1,var2=var2,var_diff=r_aoa,r_based_p=r_p3,r_based_p_one_tail=r_p3/2 ,mean_diff=dvr,upper_diff=r_uci,lower_diff=r_lci)
+    z = list(r1 = s1$coefficients[2,1], r2 = s2$coefficients[2,1], var1 = var1, var2 = var2, var_diff = r_aoa, r_based_p = r_p3, r_based_p_one_tail = r_p3 / 2, mean_diff = dvr, upper_diff = r_uci, lower_diff = r_lci) 
     #NOTE: r_based_p=r_p3 due to normal distribution
     return(z)
     
@@ -187,8 +187,7 @@ if (length(v1)==1 & length(v2)==1) {
     #95% CI
     r_uci=dvr+1.96*r_aoa^.5
     r_lci=dvr-1.96*r_aoa^.5
-    
-    z=list(r1=s1$r.squared^.5,r2=s2$r.squared^.5,var1=var1,var2=var2,var_diff=r_aoa,LRT_p=p1,r_based_p=r_p3,mean_diff=dvr,upper_diff=r_uci,lower_diff=r_lci)
+    z = list(r1 = s1$coefficients[2,1], r2 = s2$coefficients[2,1], var1 = var1, var2 = var2, var_diff = r_aoa, r_based_p = r_p3, r_based_p_one_tail = r_p3 / 2, mean_diff = dvr, upper_diff = r_uci, lower_diff = r_lci) 
     #NOTE: r_based_p=r_p3 due to normal  
     return(z)
     
@@ -224,8 +223,7 @@ if (length(v1)==1 & length(v2)==1) {
     #95% CI
     r_uci=dvr+1.96*r_aoa^.5
     r_lci=dvr-1.96*r_aoa^.5
-    
-    z=list(r1=s1$r.squared^.5,r2=s2$r.squared^.5,var1=var1,var2=var2,var_diff=r_aoa,r_based_p=r_p3,r_based_p_one_tail=r_p3/2,mean_diff=dvr,upper_diff=r_uci,lower_diff=r_lci)
+    z = list(r1 = s1$coefficients[2,1], r2 = s2$coefficients[2,1], var1 = var1, var2 = var2, var_diff = r_aoa, r_based_p = r_p3, r_based_p_one_tail = r_p3 / 2, mean_diff = dvr, upper_diff = r_uci, lower_diff = r_lci) 
     #NOTE: r_based_p=r_p3 due to normal distribution
     return(z)
     
@@ -258,8 +256,7 @@ if (length(v1)==1 & length(v2)==1) {
     #95% CI
     r_uci=dvr+1.96*r_aoa^.5
     r_lci=dvr-1.96*r_aoa^.5
-    
-    z=list(r1=s1$r.squared^.5,r2=s2$r.squared^.5,var1=var1,var2=var2,var_diff=r_aoa,r_based_p=r_p3, r_based_p_one_tail=r_p3/2,mean_diff=dvr,upper_diff=r_uci,lower_diff=r_lci)
+    z = list(r1 = s1$coefficients[2,1], r2 = s2$coefficients[2,1], var1 = var1, var2 = var2, var_diff = r_aoa, r_based_p = r_p3, r_based_p_one_tail = r_p3 / 2, mean_diff = dvr, upper_diff = r_uci, lower_diff = r_lci) 
     #NOTE: r_based_p=r_p3 due to normal distribution
     return(z)
     
@@ -291,8 +288,7 @@ if (length(v1)==1 & length(v2)==1) {
     #95% CI
     r_uci=dvr+1.96*r_aoa^.5
     r_lci=dvr-1.96*r_aoa^.5
-    
-    z=list(r1=s1$r.squared^.5,r2=s2$r.squared^.5,var1=var1,var2=var2,var_diff=r_aoa,r_based_p=r_p3, r_based_p_one_tail=r_p3/2,mean_diff=dvr,upper_diff=r_uci,lower_diff=r_lci)
+    z = list(r1 = s1$coefficients[2,1], r2 = s2$coefficients[2,1], var1 = var1, var2 = var2, var_diff = r_aoa, r_based_p = r_p3, r_based_p_one_tail = r_p3 / 2, mean_diff = dvr, upper_diff = r_uci, lower_diff = r_lci) 
     #NOTE: r_based_p=p3 due to normal distribution
     return(z)
     
