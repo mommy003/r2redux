@@ -38,7 +38,7 @@ r2redux requires only phenotype and estimated PGS (from PLINK or any other softw
 - PGS for p value 0.0001 (x10)
 
 To get the test statistics for the difference between R2(y=x[,v1]) and R2(yx[,v2]). (here we define R_1^2= R^2(y=x[,v1])) and R_2^2=R^2(y=x[,v2])))
-```
+```r
 dat=read.table("test_ukbb_thresholds_scaled") #(see example files) or
 dat=dat1 #(this example embedded within the package)
 nv=length(dat$V1)
@@ -86,7 +86,7 @@ If we want to perform some enrichment analysis (e.g., regulatory vs non_regulato
 
 To get the test statistic for the ratio which is significantly different from the expectation. var(β ̂_1^2/r_(y,(x_1,x_2))^2), where β ̂_1^2  is the squared regression coefficient of x_1 from a multiple regression model, i.e. y=x_1 β_1+ x_2 β_2+e, and r_(y,(x_1,x_2))^2 is the coefficient of determination of the model. It is noted that y, x_1 and x_2 are column standardised (mean 0 and variance 1).
 
-```
+```r
 dat=read.table("test_ukbb_enrichment_choles") #(see example file) or 
 dat=dat2 #(this example embedded within the package)
 nv=length(dat$V1)
@@ -116,7 +116,7 @@ output=r2_beta_var(dat,v1,v2,nv)
 - output$lower_beta2_sq (lower limit of 95% CI for beta2^2)
 - -0.005127546
 
-```
+```r
 dat=dat2 #(this example embedded within the package)
 nv=length(dat$V1)
 v1=c(1)
