@@ -4,12 +4,12 @@ The ‘r2redux’ package can be used to derive test statistics for R<sup>2</sup
 
 # INSTALLATION
 To use r2redux:
-```
+```r
 install.packages("r2redux") 
 library(r2redux)
 ```
  or
-```
+```r
 install.packages("devtools")
 library(devtools)
 devtools::install_github("mommy003/r2redux")
